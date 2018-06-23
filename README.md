@@ -2,14 +2,21 @@
 1st Group Project
 
 ## Group Members:
-* @ensarmu1982
+@ensarmu1982
+
 * @Ensarmu Shino
-* @whitemic
+
+@whitemic
+
 * @Michaela White
 * @Vivek Patel
-* @Vivekvaishnani
+
+@Vivekvaishnani
+
 * @William Budoyo
-* @wbudoyo07
+
+@wbudoyo07
+
 * @Daniel Gross
 
 ## Project Ideas:
