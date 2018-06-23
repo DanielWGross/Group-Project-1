@@ -3,21 +3,10 @@
 
 ## Group Members:
 @ensarmu1982
-
-* @Ensarmu Shino
-
 @whitemic
-
-* @Michaela White
-* @Vivek Patel
-
 @Vivekvaishnani
-
-* @William Budoyo
-
 @wbudoyo07
-
-* @Daniel Gross
+@DanielWGross
 
 ## Project Ideas:
 #### Event Planning App
