@@ -2,10 +2,14 @@
 1st Group Project
 
 ## Group Members:
+* @ensarmu1982
 * @Ensarmu Shino
+* @whitemic
 * @Michaela White
 * @Vivek Patel
+* @Vivekvaishnani
 * @William Budoyo
+* @wbudoyo07
 * @Daniel Gross
 
 ## Project Ideas:
@@ -48,3 +52,26 @@
   - Can create a band page based on search
   - Would display top songs, photos, band members, tour dates, etc
   
+#### Student Notes (William)
+  - Compare notes / Compare Questions
+  - Share through some sort of API (slack?)
+  - Voting system 
+
+#### Article Rater (William)
+  - Scrape article headlines (NYTimes, etc)
+  - Voting system
+  - Reddit API possibly?
+  - Overall ranking
+
+#### Home Depot / Walmart 
+  - Compare prices between retailers
+  - Most companies have an open API
+
+#### Auto Information Updater (William)
+  - Would communicate with banks, etc
+  - Update once.
+
+#### Beer Idea
+  - Instagram API (Events, pictures,etc)
+  - Untappd API (Beer Info / Possibly linked to brewery)
+  - Possible to make it have a meetup type of event using data?
