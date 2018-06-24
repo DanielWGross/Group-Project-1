@@ -1,4 +1,9 @@
-.image-size {
-    height: 200px;
-    width: 200px;
+.card:hover {
+    border-color: gold;
+    border-width: 3px;
+}
+
+.card-size {
+    height: 400px;
+    width: 400px;
 }
