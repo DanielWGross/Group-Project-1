@@ -1,3 +1,5 @@
+// Walmart API Documentation can be found below
+// https://developer.walmartlabs.com/docs
 var walmart = {
   // API Call for product lookup by ID number
   productLookup: "http://api.walmartlabs.com/v1/items/12417832?apiKey=dc7fkr9e5rwbbaqj3e42nbnn",
@@ -9,14 +11,21 @@ var walmart = {
       url: this.productSearch + searchTerm,
       method: "GET"
     }).then(function(response) {
-    // dyamic generate cards and modals
       for (i = 0; i < 10; i++) {
-        var modalHeader = response.items[i].name;
-        var modalBody = response.items[i].shortDescription;
-        var modalPrice = response.items[i].salePrice;
+        // variables to store key attributes
+        var result = response.items[i];
+        var productImage = result.largeImage;
+        var productName = result.name;
+        var productModel = result.modelNumber;
+        var productPrice = result.salePrice;
+        var productDescrip = result.shortDescription;
+        // dyamic generate cards and modals
+        var modalHeader = productName;
+        var modalBody = productDescrip;
+        var modalPrice = productPrice;
         var cardDiv = $("<div class='card'>");
         var cardImg = $("<img class='card-img-top' alt='Card image'>");
-        cardImg.attr("src", response.items[i].largeImage);
+        cardImg.attr("src", productImage);
         var cardBodyDiv = $("<div class='card-body'>");
         var cardTitle = $("<h5 class='card-title'>"+modalHeader+"</h5>");
         var cardFooterDiv = $("<div class='card-footer'>");
