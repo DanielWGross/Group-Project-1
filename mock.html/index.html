@@ -1,50 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>First Group Project</title>
-    <style>
-        body{
-            background-color: gray;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets/css/group1.css">
 </head>
+
 <body>
+
     <div class="container">
-       <h1 style="color: white">
-           Web application name here
-       </h1>
-       </div>
-    <div class="jumbotron">
-
-       <div class="container">
-        <form id="player-form">
-                <label for="player-input" >  <h3>Search any item for a quick price comparison</h3>
-                </label>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                <br>
-                <br>
-                <button type="button" class="btn btn-primary btn-lg">Submit</button>
-            </form>
+        <div class="card">
+            <img class="card-img-top" id="img-logo" src="assets/images/group1logo.png" height="200" width="280">
+            <div class="card-body">
+                <nav>
+                    <div class="nav-wrapper">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required>
+                                <label class="label-icon" for="search">
+                                    <i class="material-icons">search</i>
+                                </label>
+                                <i class="material-icons">close</i>
+                            </div>
+                        </form>
+                    </div>
+                </nav>
             </div>
-            </div>
 
-            <div   class="jumbotron">
-                
-                   <div class="container">
-                    <h3 >Space for sample item display</h3>
-                   </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="assets/images/blender.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Card Title
+                            <i class="material-icons right">more_vert</i>
+                        </span>
+                        <p>
+                            <a href="#">This is a link</a>
+                        </p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title
+                            <i class="material-icons right">close</i>
+                        </span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
                 </div>
-
-                <div class="container">
-                        <h3 style="color: white">
-                            Search result display here
-                        </h3>
-                        </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="assets/images/blender.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Card Title
+                            <i class="material-icons right">more_vert</i>
+                        </span>
+                        <p>
+                            <a href="#">This is a link</a>
+                        </p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title
+                            <i class="material-icons right">close</i>
+                        </span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card card-selection">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="assets/images/blender.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Card Title
+                            <i class="material-icons right">more_vert</i>
+                        </span>
+                        <p>
+                            <a href="#">This is a link</a>
+                        </p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title
+                            <i class="material-icons right">close</i>
+                        </span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -53,4 +123,5 @@
 
     <script type="text/javascript" src=""></script>
 </body>
+
 </html>
