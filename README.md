@@ -8,6 +8,11 @@
 @wbudoyo07
 @DanielWGross
 
+#### Beer Idea
+  - Search results for Walmart or ebay needs to be a list inside a single div 
+  - On click to select single item from Walmart and ebay 
+  - Compare results and provide in table or side by side (to be determine)
+
 ## Project Ideas:
 #### Event Planning App
 - Birthday / Wedding / Etc.

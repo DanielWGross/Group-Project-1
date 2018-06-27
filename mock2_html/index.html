@@ -12,23 +12,48 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+  <!-- animate.css CDN-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <!-- animation css link -->
+  <link rel="stylesheet" href ="animation.css">
+  <!-- hover css link -->
+  <link rel="stylesheet" href="hover.css" media="all">
+
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
 </head>
 
 <body>
-
+  
+  
   <div class="container">
 
     <!-- Item Search: Enter Items to compare  -->
-    <div class="jumbotron" style="background-color: gray; color: white">
+    <div class="jumbotron">
+        <header id="headerID"> 
+          <!-- main logo -->
+           <!-- <img src="image/Twitter_Bird.svg.png" class="mainLogo" class="animated  bounceInRight"> -->
+            <table align="center">
+              
+                    <tr>
+                 
+                       <!-- mixed animation -->
+                  <td class= "animated  bounceInRight">N</td>
+                  <td class= "animated  bounceInDown">O</td>
+                  <td class= "animated  bounceInLeft">N</td>
+                  <td class= "animated  bounceInDown">A</td>
+                  <td class= "animated  bounceInRight">M</td>
+                  <td class= "animated  bounceInLeft">E</td>
+                    </table>
+                    </header>
       <form>
         <div class="form-group row">
-          <label for="search-item-input">Search Item to Compare</label>
+          <label class="searchTitle"for="search-item-input">Search Item to Compare</label>
           <input class="form-control" id="search-item-input" placeholder="Item to Compare" type="text">
         </div>
-        <button class="btn btn-primary float-left" id="search-btn">Submit</button>
+        <button class="btn btn-primary float-left hvr-float-shadow" id="search-btn">Submit</button>
       </form>
     </div>
 
@@ -77,7 +102,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <footer class="card-footer text-center bg-primary" style="background-color: gray">
+        <footer class="card-footer text-center" >
           Copyright &copy; 
         </footer>
       </div>
