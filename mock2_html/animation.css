@@ -1,3 +1,4 @@
+/* header */
 .jumbotron{
 
     background-color: rgb(233, 246, 247);
@@ -7,6 +8,26 @@
      color:rgb(107, 239, 129);
      font-size: 50px;
      font-family: fantasy;
+}
+.mainLogo{
+    width: 100px;
+    height: 100px;
+    align: center;
+    
+}
+
+#search-item-input{
+    font-family: fantasy;
+}
+
+#search-btn{
+    font-family: fantasy;
+}
+
+/* footer */
+.card-footer {
+    background-color: rgb(233, 246, 247);
+    font-family: fantasy;
 }
 
 .searchTitle{
