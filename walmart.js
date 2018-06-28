@@ -11,9 +11,11 @@ var walmart = {
       url: this.productSearch + searchTerm,
       method: "GET"
     }).then(function(response) {
+      console.log("Done!");
       storage.walmart.response = response;
       storage.walmart.apiReturn = true;
-      storage.walmart.pullData;
+      storage.walmart.pullData();
+      
     });
   }
 };

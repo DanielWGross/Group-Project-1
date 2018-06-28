@@ -11,6 +11,7 @@ var storage = {
     // Will extract relevant data from the JSON call and pass to render function
     pullData: function() {
       for (i= 0; i < numResults; i++) {
+        console.log("Pull Data Running!");
         // variable to store location to avoid repetive typing
         var location = this.response.items[i];
         // largest image size avaliable
@@ -26,24 +27,53 @@ var storage = {
         var description = location.longDescription;
         // Call the render function to generate the cards on the index.html file
         // TODO: Create renderfunction
-        // renderfunction(image,name,model,price,description);
+        storage.renderElements(i, image, name, model, price, description);
       };
     },
   ebay : {
     response: {},
     apiReturn: false
   }
+  },
+  renderElements: function(location, image, name, model, price, description) {
+    console.log("Render Elements Running!");
+    var cardColumn = $("<div class'col-md-2'>");
+    var card = $("<div class='card card-selection'>");
+    var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
+    var cardImage = $("<img>");
+      $(cardImage).addClass("activator card-size");
+      $(cardImage).attr("src", image); 
+    var cardContent = $("<div class='card-content'>");
+    var cardTitle = $("<span class='card-title activator grey-text text-darken-4'>");
+      $(cardTitle).text("Name");
+    var cardArrow = $("<i class='material-icons right activator waves-effect'>");
+      $(cardArrow).text("arrow_drop_up");
+    var cardPrice = $("<h4>"+price+"</h4>");
+    var cardReveal = $("<div class='card-reveal'>");
+    var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
+      $(cardRevealTitle).text("Name");
+    var cardClose = $("<i class='material-icons right'>close</i>");
+    cardRevealTitle.append(cardClose);
+    cardReveal.append(cardRevealTitle);
+    cardTitle.append(cardArrow);
+    cardContent.append(cardTitle, cardPrice);
+    cardImageHolder.append(cardImage);
+    card.append(cardImageHolder, cardContent, cardReveal);
+    cardColumn.append(card);
+    $("#test").append(cardColumn);
   }
 };
 
 
 
-// $(document).on("click", "#submit-button", function (event) {
-//   $("#test").empty();
-//   event.preventDefault();
-//   var userSearch = $("#searchTerm").val().trim();
-//   walmart.callAPI(userSearch);
-// });
+
+
+$(document).on("click", "#submit-button", function (event) {
+  $("#test").empty();
+  event.preventDefault();
+  var userSearch = $("#searchTerm").val().trim();
+  walmart.callAPI(userSearch);
+});
 // $(document).on("click", ".modal-button", function(event) {
 //   event.preventDefault();
 //   $(".modal-title").text($(this).attr("data-header"));
