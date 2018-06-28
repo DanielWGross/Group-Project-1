@@ -1,5 +1,5 @@
 body{
-    align-content: center;
+  
 }
 
 .container {
@@ -7,10 +7,21 @@ body{
     margin: 20px 20px 20px 60px;
 }
 
-#img-logo {
-    margin-left: 420px;
-}
+
 
 #item-cards{
     margin-left: 100px;
+}
+
+nav{
+    margin-top: 63px;
+}
+
+#search{
+    color: steelblue;
+}
+
+#img-amazon{
+    margin-top: 70px;
+    
 }
