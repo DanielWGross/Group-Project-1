@@ -3,11 +3,46 @@ body{
 }
 
 .container {
-   
+    position: relative;
     margin: 20px 20px 20px 60px;
 }
 
+/* animation title characters */
+#animationTitle-N{
+    position: absolute;
+    top: 35%;
+    left: 37%;
+    font-size: 30px;
+    color:greenyellow;
+}
+#animationTitle-a{
+    position: absolute;
+    top: 35%;
+    left: 44%;
+    font-size: 30px;
+    color:greenyellow;
+}
 
+#animationTitle-m{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    font-size: 30px;
+    color:greenyellow
+}
+
+#animationTitle-e{
+    position: absolute;
+    top: 35%;
+    left: 59%;
+    font-size: 30px;
+    color:greenyellow
+}
+
+/* end animation Title */
+
+
+/* animation title cracters end */
 
 #item-cards{
     margin-left: 100px;

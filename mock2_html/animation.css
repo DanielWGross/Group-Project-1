@@ -1,4 +1,11 @@
 /* header */
+.animated{
+    -webkit-animation-duration: 3s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
 .jumbotron{
 
     background-color: rgb(233, 246, 247);
@@ -33,3 +40,9 @@
 .searchTitle{
 font-family: fantasy;
 }
+
+#testWorld {
+    -vendor-animation-duration: 3s;
+    -vendor-animation-delay: 2s;
+    -vendor-animation-iteration-count: infinite;
+  }
