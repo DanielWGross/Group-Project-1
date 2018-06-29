@@ -10,3 +10,16 @@
 .no-left-margin {
     margin-left: 0!important;
 }
+
+.card {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+body {
+    width: 100%;
+}
+
+.wrapper {
+    width: 85%;
+}
