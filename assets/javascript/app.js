@@ -63,7 +63,7 @@ var storage = {
     $("#test").append(cardColumn);
   }
 };
-$(document).on("click", "#submit-button", function (event) {
+$(document).on("click", "#search", function (event) {
   $("#test").empty();
   event.preventDefault();
   var userSearch = $("#searchTerm").val().trim();
