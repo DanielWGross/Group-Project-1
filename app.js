@@ -45,13 +45,13 @@ var storage = {
       $(cardImage).attr("src", image); 
     var cardContent = $("<div class='card-content'>");
     var cardTitle = $("<span class='card-title activator grey-text text-darken-4'>");
-      $(cardTitle).text("Name");
+      $(cardTitle).text("name");
     var cardArrow = $("<i class='material-icons right activator waves-effect'>");
       $(cardArrow).text("arrow_drop_up");
     var cardPrice = $("<h4>"+price+"</h4>");
     var cardReveal = $("<div class='card-reveal'>");
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
-      $(cardRevealTitle).text("Name");
+      $(cardRevealTitle).text("name");
     var cardClose = $("<i class='material-icons right'>close</i>");
     cardRevealTitle.append(cardClose);
     cardReveal.append(cardRevealTitle);
@@ -63,38 +63,9 @@ var storage = {
     $("#test").append(cardColumn);
   }
 };
-
-
-
-
-
 $(document).on("click", "#submit-button", function (event) {
   $("#test").empty();
   event.preventDefault();
   var userSearch = $("#searchTerm").val().trim();
   walmart.callAPI(userSearch);
 });
-// $(document).on("click", ".modal-button", function(event) {
-//   event.preventDefault();
-//   $(".modal-title").text($(this).attr("data-header"));
-//   $(".modal-body").text($(this).attr("data-body"));
-//   $("#modal-price").text($(this).attr("data-price"));
-// });
-
-// $(document).on("click", ".card", function() {
-//   $("#test").empty();
-//   var yourChoice = $("<h1>Your Choice:");
-//   var cardDiv = $("<div class='card'>");
-//   var cardImgSRC = $(this).find("img").attr("src");
-//   var cardImg = $("<img class='card-img-top' alt='Card image'>");
-//   cardImg.attr("src", cardImgSRC);
-//   cardImg.addClass("card-size");
-//   var cardBodyDiv = $("<div class='card-body'>");
-//   var cardTitleSRC = $(this).find("h5").text();
-//   var cardTitle = $("<h5 class='card-title'>"+cardTitleSRC+"</h5>");
-//   cardBodyDiv.append(cardTitle);
-//   cardDiv.append(cardImg, cardBodyDiv);
-//   $("#test").append(cardDiv);
-// });
-
-// // }).then(responseFilter.walmart = response);
