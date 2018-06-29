@@ -63,9 +63,14 @@ var storage = {
     $("#test").append(cardColumn);
   }
 };
-$(document).on("click", "#search", function (event) {
-  $("#test").empty();
-  event.preventDefault();
-  var userSearch = $("#searchTerm").val().trim();
-  walmart.callAPI(userSearch);
+$("#search").keypress(function(event) {
+  var searchTerm = $("#search").val().trim();
+  if (event.which === 13) {
+    searchHandler(searchTerm);
+  };
 });
+
+function searchHandler (searchTerm) {
+  $("#test").empty();
+  walmart.callAPI(searchTerm);
+};
