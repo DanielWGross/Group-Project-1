@@ -1,4 +1,4 @@
-// Storing number of results as a variable gloablly. Should look to implement a user setting
+  // Storing number of results as a variable gloablly. Should look to implement a user setting
 var numResults = 5;
 // Gloabl variable which will house the JSON from the AJAX calls to pass on to other functions
 var storage = {
