@@ -11,7 +11,7 @@ var storage = {
     // Will extract relevant data from the JSON call and pass to render function
     pullData: function() {
       for (i= 0; i < numResults; i++) {
-        console.log("Pull Data Running!");
+        // console.log("Pull Data Running!");
         // variable to store location to avoid repetive typing
         var location = this.response.items[i];
         // largest image size avaliable
@@ -29,16 +29,35 @@ var storage = {
         var cartURL = location.addToCartUrl;
         // Call the render function to generate the cards on the index.html file
         // TODO: Create renderfunction
-        storage.renderElements(i, image, name, model, price, description);
+        storage.renderElements("walmart", image, name, model, price, description);
       };
+    }
     },
   ebay : {
-    response: {},
-    apiReturn: false
-  }
+    response: {
+      name: [],
+      image: [],
+      price: [],
+      description: [],
+      URL: [],
+    },
+    apiReturn: false,
+    pullData: function () {
+      var data = storage.ebay.response;
+      if (this.apiReturn === true) {
+      for (var i = 0; i < numResults; i++) {
+        var image = this.response.image[i];
+        var name = this.response.name[i];
+        var model = "model";
+        var price = this.response.price[i];
+        var description = this.response.description[i];
+        storage.renderElements("ebay", image, name, model, price, description);
+        }
+      }     
+    }
   },
   renderElements: function(location, image, name, model, price, description) {
-    console.log("Render Elements Running!");
+    // console.log("Render Elements Running!");
     var cardColumn = $("<div class='col s2'>");
     var card = $("<div class='card card-selection'>");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
@@ -47,13 +66,13 @@ var storage = {
       $(cardImage).attr("src", image); 
     var cardContent = $("<div class='card-content'>");
     var cardTitle = $("<span class='card-title activator grey-text text-darken-4'>");
-      $(cardTitle).text("name");
+      $(cardTitle).text(name);
     var cardArrow = $("<i class='material-icons right activator waves-effect'>");
       $(cardArrow).text("arrow_drop_up");
     var cardPrice = $("<h4>"+price+"</h4>");
     var cardReveal = $("<div class='card-reveal'>");
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
-      $(cardRevealTitle).text("name");
+      $(cardRevealTitle).text(name);
     var cardClose = $("<i class='material-icons right'>close</i>");
     cardRevealTitle.append(cardClose);
     cardReveal.append(cardRevealTitle);
@@ -62,7 +81,13 @@ var storage = {
     cardImageHolder.append(cardImage);
     card.append(cardImageHolder, cardContent, cardReveal);
     cardColumn.append(card);
-    $("#test").append(cardColumn);
+    if (location === "walmart") {
+      $("#test").append(cardColumn);
+    }
+    else {
+      $("#ebay-test").append(cardColumn);
+    }
+    
   }
 };
 // event handler for search bar
@@ -79,6 +104,8 @@ $("#search").keypress(function(event) {
 function searchHandler (searchTerm) {
   // empties the contents of the search display area
   $("#test").empty();
+
+  ebay.callAPI(searchTerm);
   // calls the walmart API method passing the search value argument
   walmart.callAPI(searchTerm);
 };
