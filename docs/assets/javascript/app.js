@@ -37,7 +37,7 @@ var storage = {
   },
   renderElements: function(location, image, name, model, price, description) {
     console.log("Render Elements Running!");
-    var cardColumn = $("<div class='col s2'>");
+    var cardColumn = $("<div class='col xl2 col l3  col m4  col  s12  col xs12'>");
     var card = $("<div class='card card-selection'>");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
     var cardImage = $("<img>");
