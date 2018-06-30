@@ -11,7 +11,7 @@ var storage = {
     // Will extract relevant data from the JSON call and pass to render function
     pullData: function() {
       for (i= 0; i < numResults; i++) {
-        console.log("Pull Data Running!");
+        // console.log("Pull Data Running!");
         // variable to store location to avoid repetive typing
         var location = this.response.items[i];
         // largest image size avaliable
@@ -32,24 +32,30 @@ var storage = {
     }
     },
   ebay : {
-    response: {},
+    response: {
+      name: [],
+      image: [],
+      price: [],
+      description: [],
+      URL: [],
+    },
     apiReturn: false,
     pullData: function () {
+      var data = storage.ebay.response;
       if (this.apiReturn === true) {
       for (var i = 0; i < numResults; i++) {
         var image = this.response.image[i];
-        console.log("Image = " + this.response.price);
         var name = this.response.name[i];
         var model = "model";
         var price = this.response.price[i];
-        var description = this.response.name[i];
+        var description = this.response.description[i];
         storage.renderElements("ebay", image, name, model, price, description);
         }
       }     
     }
   },
   renderElements: function(location, image, name, model, price, description) {
-    console.log("Render Elements Running!");
+    // console.log("Render Elements Running!");
     var cardColumn = $("<div class='col s2'>");
     var card = $("<div class='card card-selection'>");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
@@ -58,13 +64,13 @@ var storage = {
       $(cardImage).attr("src", image); 
     var cardContent = $("<div class='card-content'>");
     var cardTitle = $("<span class='card-title activator grey-text text-darken-4'>");
-      $(cardTitle).text("name");
+      $(cardTitle).text(name);
     var cardArrow = $("<i class='material-icons right activator waves-effect'>");
       $(cardArrow).text("arrow_drop_up");
     var cardPrice = $("<h4>"+price+"</h4>");
     var cardReveal = $("<div class='card-reveal'>");
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
-      $(cardRevealTitle).text("name");
+      $(cardRevealTitle).text(name);
     var cardClose = $("<i class='material-icons right'>close</i>");
     cardRevealTitle.append(cardClose);
     cardReveal.append(cardRevealTitle);
