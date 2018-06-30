@@ -11,10 +11,14 @@ var walmart = {
       url: this.productSearch + searchTerm,
       method: "GET"
     }).then(function(response) {
+      // TODO: Remove this after testing
       console.log("Done!");
+      // Send the response to the global variable
       storage.walmart.response = response;
+      // Update the state of the api return value to true
       storage.walmart.apiReturn = true;
-      storage.walmart.pullData();      
+      // call the pullData function for walmart
+      storage.walmart.pullData();     
     });
   }
 };

@@ -25,6 +25,8 @@ var storage = {
         var price = location.salePrice;
         // Long description of the product
         var description = location.longDescription;
+        // Add to Cart URL
+        var cartURL = location.addToCartUrl;
         // Call the render function to generate the cards on the index.html file
         // TODO: Create renderfunction
         storage.renderElements("walmart", image, name, model, price, description);
@@ -88,15 +90,22 @@ var storage = {
     
   }
 };
+// event handler for search bar
 $("#search").keypress(function(event) {
+  // stores the value of the user search
   var searchTerm = $("#search").val().trim();
+  // if key pressed is the <enter> key...
   if (event.which === 13) {
+    // call the searchHandler function passing the user search value
     searchHandler(searchTerm);
   };
 });
-
+// passes the search term to the API calls
 function searchHandler (searchTerm) {
+  // empties the contents of the search display area
   $("#test").empty();
+
   ebay.callAPI(searchTerm);
+  // calls the walmart API method passing the search value argument
   walmart.callAPI(searchTerm);
 };
