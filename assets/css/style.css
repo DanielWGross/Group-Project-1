@@ -23,3 +23,11 @@ body {
 .wrapper {
     width: 85%;
 }
+
+.margin-20 {
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: justify;
+}
