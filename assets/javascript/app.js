@@ -25,11 +25,9 @@ var storage = {
         var price = location.salePrice;
         // Long description of the product
         var description = location.longDescription;
-        // Add to Cart URL
-        var cartURL = location.addToCartUrl;
         // Call the render function to generate the cards on the index.html file
         // TODO: Create renderfunction
-        storage.renderElements("walmart", image, name, model, price, description);
+        storage.renderElements("walmart", i, image, name, model, price, description);
       };
     }
     },
@@ -51,21 +49,23 @@ var storage = {
         var model = "model";
         var price = this.response.price[i];
         var description = this.response.description[i];
-        storage.renderElements("ebay", image, name, model, price, description);
+        storage.renderElements("ebay", i, image, name, model, price, description);
         }
       }     
     }
   },
-  renderElements: function(location, image, name, model, price, description) {
+
+
+  renderElements: function(api, location, image, name, model, price, description) {
     // console.log("Render Elements Running!");
     var cardColumn = $("<div class='col s2'>");
-    var card = $("<div class='card card-selection'>");
+    var card = $("<div class='card card-selection' data-id=" + location + ">");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
     var cardImage = $("<img>");
       $(cardImage).addClass("activator card-size");
       $(cardImage).attr("src", image); 
     var cardContent = $("<div class='card-content'>");
-    var cardTitle = $("<span class='card-title activator grey-text text-darken-4'>");
+    var cardTitle = $("<span class='card-title activator grey-text text-darken-4 truncate'>");
       $(cardTitle).text(name);
     var cardArrow = $("<i class='material-icons right activator waves-effect'>");
       $(cardArrow).text("arrow_drop_up");
@@ -81,7 +81,7 @@ var storage = {
     cardImageHolder.append(cardImage);
     card.append(cardImageHolder, cardContent, cardReveal);
     cardColumn.append(card);
-    if (location === "walmart") {
+    if (api === "walmart") {
       $("#test").append(cardColumn);
     }
     else {
@@ -154,22 +154,58 @@ var storage = {
 
   }
 };
-// event handler for search bar
 $("#search").keypress(function(event) {
-  // stores the value of the user search
   var searchTerm = $("#search").val().trim();
-  // if key pressed is the <enter> key...
   if (event.which === 13) {
-    // call the searchHandler function passing the user search value
     searchHandler(searchTerm);
   };
 });
-// passes the search term to the API calls
-function searchHandler (searchTerm) {
-  // empties the contents of the search display area
-  $("#test").empty();
 
+function searchHandler (searchTerm) {
+  $("#test").empty();
   ebay.callAPI(searchTerm);
-  // calls the walmart API method passing the search value argument
   walmart.callAPI(searchTerm);
+};
+
+var counter = 0;
+
+var compareItem1 = {
+  image: "",
+  name: "",
+  price: "",
+  description: "",
+
+};
+
+var compareItem2 = {
+  image: "",
+  name: "",
+  price: "",
+  description: "",
+}
+
+$(".card").on("click", function(){
+  counter++;
+  if (counter === 1) { //if using walmart data need to make sure clicked on walmart card
+    var index = this.attr("data-id").val();
+    var storageLocation = storage.walmart.response.items[index];
+    compareItem1.image = storageLocation.largeImage;
+    compareItem1.price = storageLocation.salePrice;
+    compareItem.name = storageLocation.name;
+    compareItem1.description = stroageLocation.description;
+  }
+  if (counter === 2) {
+    var index = this.attr("data-id").val();
+    var storageLocation = storage.ebay.response;
+    compareItem2.image = storageLocation.image[index];
+    compareItem2.name = storageLocation.name[index];
+    compareItem2.price = storageLocation.price[index];
+    compareItem2.description = storageLocation.description[index];
+    clearPage();
+  }
+});
+
+function clearPage() {
+  $(".nav-wrapper").empty();
+  $(".wrapper").empty();
 };
