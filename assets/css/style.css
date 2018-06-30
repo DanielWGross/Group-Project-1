@@ -23,3 +23,41 @@ body {
 .wrapper {
     width: 85%;
 }
+
+/* CSS for animation title */
+#animationTitle{
+    position: relative;
+}
+
+#animationTitle-N{
+    position: absolute;
+    top:35%;
+    left:30%;
+    font-size: 30px;
+    color:greenyellow;
+    
+}
+
+#animationTitle-a{
+    position: absolute;
+    top:35%;
+    left:38%;
+    font-size: 30px;
+    color:greenyellow;
+}
+
+#animationTitle-m{
+    position: absolute;
+    top:35%;
+    left:43%;
+    font-size: 30px;
+    color:greenyellow;
+}
+
+#animationTitle-e{
+    position: absolute;
+    top:35%;
+    left:50%;
+    font-size: 30px;
+    color:greenyellow;
+}
