@@ -88,6 +88,70 @@ var storage = {
       $("#ebay-test").append(cardColumn);
     }
     
+  },
+  renderCompare: function(image, name, price, description) {
+    // HTML elements for top header
+    var container = $("<container>");
+    var headerDiv = $("<div class='center-align'>");
+    var headerTitle = $("<h1>Compare Products</h1>");
+    var headerLink = $("<a href='#'>Choose Other Products To Compare</a>");
+
+    // HTML elements for Product section
+    var section = $("<div class='section'>");
+    var row = $("div class='row'");
+    var productTitle = $("<h5>Product</h5>");
+    var diverWMargin = $("<div class='divider margin-20'>");
+
+  //   <div class="container">
+  //   <div class="center-align" id="header-wrapper">
+  //     <h1 class="center-align">Compare Products</h1>
+  //     <a href="#">Choose Other Products To Compare</a>
+  //   </div> 
+
+  //   <div class="section">
+  //     <div class="row">
+  //       <h5>Product</h5>
+  //       <div class="divider margin-20"></div>
+
+  //       <div class="col s6 center-align">
+  //         <img src="assets/images/charlie.jpg" height="300px" width="300px">
+  //         <h3 class="center-align flow-text">$49.99</h3>
+  //         <div class="center-align" id="link-wrapper">
+  //           <div class="row">
+              
+  //             <div class="col s6 offset-s3 center-align">
+  //               <a href="#" class="left">Learn More</a>
+  //               <a href="#" class="right">Add to Cart</a>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //       <div class="col s6 center-align">
+  //         <img src="assets/images/colt.jpg" height="300px" width="300px">
+  //         <h3 class="center-align flow-text">$49.99</h3>
+  //         <div class="row">
+  //           <div class="col s6 offset-s3 center-align">
+  //             <a href="#" class="left">Learn More</a>
+  //             <a href="#" class="right">Add to Cart</a>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  //   <div class="section">
+  //     <div class="row">
+  //       <h5>Product Description</h5>
+  //       <div class="divider"></div>
+  //       <div class="col s5">
+  //         <p class="flow-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+  //       </div>
+  //       <div class="col s5 offset-s2">
+  //         <p class="flow-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+  //       </div>
+  //     </div>
+  //   </div>
+  // </div>
+
   }
 };
 // event handler for search bar
