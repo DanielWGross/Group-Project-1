@@ -58,7 +58,7 @@ var storage = {
 
   renderElements: function(api, location, image, name, model, price, description) {
     // console.log("Render Elements Running!");
-    var cardColumn = $("<div class='col s2'>");
+    var cardColumn = $("<div class='col xl2 col l3  col m4  col  s12  col xs12'>");
     var card = $("<div class='card card-selection' data-id=" + location + ">");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
     var cardImage = $("<img>");
@@ -69,7 +69,7 @@ var storage = {
       $(cardTitle).text(name);
     var cardArrow = $("<i class='material-icons right activator waves-effect'>");
       $(cardArrow).text("arrow_drop_up");
-    var cardPrice = $("<h4>"+price+"</h4>");
+    var cardPrice = $("<h5> $"+price+"</h5>");
     var cardReveal = $("<div class='card-reveal'>");
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
       $(cardRevealTitle).text(name);
@@ -162,6 +162,8 @@ $("#search").keypress(function(event) {
 });
 
 function searchHandler (searchTerm) {
+  // prevents default submition //
+  event.preventDefault();
   $("#test").empty();
   ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
