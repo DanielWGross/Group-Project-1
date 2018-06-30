@@ -1,11 +1,12 @@
 console.log("animation title is working");
 
 // our project name
-var projectName="Name";
+var projectName=["N","A","M","E"];
 
 $(document).ready(function(){
     //testing
-    console.log(projectName.charAt(0));
+    console.log(projectName.indexOf("N"));
+    console.log(projectName[0]);
     console.log(projectName.length);
 
     //function that animation word from left side
@@ -13,10 +14,10 @@ $(document).ready(function(){
         //iterate project name char
         for(i=0; i<projectName.length; i++){
             var newDiv= $("<div>");
-            newDiv.attr("id","animationTitle-"+projectName.charAt(i));
+            newDiv.attr("id","animationTitle-"+projectName[0]);
             // add class for animated fadeInLeftBig . we got this class from animation.css libary
             newDiv.addClass("animated fadeInLeftBig");
-            newDiv.text(projectName.charAt(i) );
+            newDiv.text(projectName[0] );
             $("#animationTitle").append(newDiv);
 
             //update the i by 1 so it will get the next character ex:N_M_
@@ -43,9 +44,19 @@ $(document).ready(function(){
 
     }// end animationFromTop
 
+    function animationLeft(){
+        var newDiv=$("<div>");
+        newDiv.attr("id","animationTitle-"+projectName[0]);
+        newDiv.addClass("animated fadeInLeftBig");
+        newDiv.text(projectName[0]);
+        $("#animationTitle").append(newDiv);
+        
+    }
     // CALL FUNCTION
-    animationFromLeft();
-    animationFromTop();
+    // animationFromLeft();
+    // animationFromTop();
+
+    animationLeft();
 
 
 })// end document.ready
