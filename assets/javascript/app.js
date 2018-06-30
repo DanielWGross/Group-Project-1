@@ -27,13 +27,26 @@ var storage = {
         var description = location.longDescription;
         // Call the render function to generate the cards on the index.html file
         // TODO: Create renderfunction
-        storage.renderElements(i, image, name, model, price, description);
+        storage.renderElements("walmart", image, name, model, price, description);
       };
+    }
     },
   ebay : {
     response: {},
-    apiReturn: false
-  }
+    apiReturn: false,
+    pullData: function () {
+      if (this.apiReturn === true) {
+      for (var i = 0; i < numResults; i++) {
+        var image = this.response.image[i];
+        console.log("Image = " + this.response.price);
+        var name = this.response.name[i];
+        var model = "model";
+        var price = this.response.price[i];
+        var description = this.response.name[i];
+        storage.renderElements("ebay", image, name, model, price, description);
+        }
+      }     
+    }
   },
   renderElements: function(location, image, name, model, price, description) {
     console.log("Render Elements Running!");
@@ -60,7 +73,13 @@ var storage = {
     cardImageHolder.append(cardImage);
     card.append(cardImageHolder, cardContent, cardReveal);
     cardColumn.append(card);
-    $("#test").append(cardColumn);
+    if (location === "walmart") {
+      $("#test").append(cardColumn);
+    }
+    else {
+      $("#ebay-test").append(cardColumn);
+    }
+    
   }
 };
 $("#search").keypress(function(event) {
@@ -72,5 +91,6 @@ $("#search").keypress(function(event) {
 
 function searchHandler (searchTerm) {
   $("#test").empty();
+  ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
 };
