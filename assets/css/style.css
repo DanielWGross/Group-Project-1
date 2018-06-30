@@ -28,7 +28,7 @@ body {
 }
 
 
-#animationTitle{
+/* #animationTitle{
     background-image: url("../images/group1logo.png");
     height: 280px;
     width: 280px;
@@ -58,10 +58,19 @@ body {
     padding-top: 150px;
     float: left;
 
-}
+} */
 
 /* #animationTitle-e{
     text-align:center;
     float:left;
 } */
   
+
+.margin-20 {
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: justify;
+}
+
