@@ -33,17 +33,21 @@ body {
 /* animation LOGO */
 #img-logo{
 position: relative;
+/* call @keyframes logoAnimation  */
 animation-name: logoAnimation;
 animation-duration:3s;
 height:200px; 
 width: 280px;
 }
-
+/* animation  that load 0 to 100% in 3 sec(it sets from animation-duration:3s) */
 @keyframes logoAnimation{
+    /* image start from -300px */
     0%   {left:-300px; top:0px;}
     25%  {transform: rotate(45deg);left:20px; top:0px;} 
     50%  {transform: rotate(360deg);left:-150px; top:0px;}
+    /* rotateY is rotation from Y axis */
     75%  { transform: rotateY(360deg);left:0px; top:0px;}
+    /* back to default image position */
     100% { left:0px; top:0px;} 
 }
 

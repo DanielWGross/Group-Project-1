@@ -157,6 +157,8 @@ var storage = {
 $("#search").keypress(function(event) {
   var searchTerm = $("#search").val().trim();
   if (event.which === 13) {
+    
+    emptyInput(searchTerm);
     searchHandler(searchTerm);
   };
 });
@@ -211,3 +213,14 @@ function clearPage() {
   $(".nav-wrapper").empty();
   $(".wrapper").empty();
 };
+
+// function that check if user input empty value
+function emptyInput(userInput){
+
+  
+  if(userInput==""){
+      // gotta change alert to modal later
+    alert("Please enter something");
+  };
+
+};// end emptyInput
