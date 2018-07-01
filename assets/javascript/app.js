@@ -159,6 +159,7 @@ $("#search").keypress(function(event) {
   if (event.which === 13) {
     
     emptyInput(searchTerm);
+    regexInput(searchTerm);
     searchHandler(searchTerm);
   };
 });
@@ -218,9 +219,20 @@ function clearPage() {
 function emptyInput(userInput){
 
   
-  if(userInput==""){
+  if(userInput=="A"){
       // gotta change alert to modal later
     alert("Please enter something");
   };
-
 };// end emptyInput
+
+// function that check for no RegEx (Regular Expression)
+function regexInput(userInput){
+
+var regex= /^[^\W_]+$/;
+  if(regex.test(userInput)){
+    console.log("GOOD Job, you input no special characters")
+  }else{
+    alert("No Symbols Please!!")
+  }
+
+}// end regexInput
