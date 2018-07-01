@@ -219,7 +219,7 @@ function clearPage() {
 function emptyInput(userInput){
 
   
-  if(userInput=="A"){
+  if(userInput==""){
       // gotta change alert to modal later
     alert("Please enter something");
   };
@@ -227,10 +227,13 @@ function emptyInput(userInput){
 
 // function that check for no RegEx (Regular Expression)
 function regexInput(userInput){
-
-var regex= /^[^\W_]+$/;
+  // allow a-z= lower alphabet A-Z= Capital alphabet, 0-9=number 0-9 
+// var regex=/^[a-zA-Z0-9]+\s?[a-zA-Z0-9]+$/;
+// regex this regex only allow lower alphabet, capital Alphabet, number, and spaces
+var regex=/^[a-zA-Z0-9_ ]*$/;
+// var regex= /^[^\W_\s]+$/;
   if(regex.test(userInput)){
-    console.log("GOOD Job, you input no special characters")
+    console.log("GOOD Job, you input no symbol")
   }else{
     alert("No Symbols Please!!")
   }
