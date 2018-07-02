@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-  <!-- animation.css CDN -->
+     <!-- animation.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">  
@@ -22,18 +22,19 @@
 </head>
 
 <body>
+    <!-- TODO: Needs to be removed once real functionality is added -->
+  <button id="yellow">CLICK ME!</button>
     <div class="row valign-wrapper">
-      <div class="col s3 offset-s1">
-            <img  id="img-logo" src="assets/images/group1logo.png">
+      <div id="animationTitle" class="col s3 offset-s1">
+        <img  id="img-logo" src="assets/images/group1logo.png" height="200" width="280">
       </div>  
-      <div class="col xl9 col l9 col s12 no-left-margin">         
+      <div class="col s7 no-left-margin">         
         <nav>
           <div class="nav-wrapper">
             <form>
               <div class="input-field">
-                <input id="search" type="search"   placeholder="search compare conquer" required>
-                <label  class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
+                <textarea id="search" type="text" class="materialize-textarea"></textarea>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
               </div>
             </form>
           </div>
@@ -49,7 +50,8 @@
     </div>
   </div>
 
-
+  <!-- animation script -->
+  <script type="text/javascript" src="assets/javascript/animationTitle.js"> </script>
   <!-- Walmart Logic -->
   <script src="assets/javascript/walmart.js"></script>
     <!-- Ebay Logic -->
