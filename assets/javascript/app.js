@@ -1,4 +1,4 @@
-  // Storing number of results as a variable gloablly. Should look to implement a user setting
+// Storing number of results as a variable gloablly. Should look to implement a user setting
 var numResults = 5;
 // Gloabl variable which will house the JSON from the AJAX calls to pass on to other functions
 var storage = {
@@ -25,9 +25,11 @@ var storage = {
         var price = location.salePrice;
         // Long description of the product
         var description = location.longDescription;
+        // Add to Cart URL
+        var cartURL = location.addToCartUrl;
         // Call the render function to generate the cards on the index.html file
         // TODO: Create renderfunction
-        storage.renderElements("walmart", i, image, name, model, price, description);
+        storage.renderElements("walmart", image, name, model, price, description);
       };
     }
     },
@@ -49,27 +51,25 @@ var storage = {
         var model = "model";
         var price = this.response.price[i];
         var description = this.response.description[i];
-        storage.renderElements("ebay", i, image, name, model, price, description);
+        storage.renderElements("ebay", image, name, model, price, description);
         }
       }     
     }
   },
-
-
-  renderElements: function(api, location, image, name, model, price, description) {
+  renderElements: function(location, image, name, model, price, description) {
     // console.log("Render Elements Running!");
-    var cardColumn = $("<div class='col xl2 col l3  col m4  col  s12  col xs12'>");
-    var card = $("<div class='card card-selection' data-id=" + location + ">");
+    var cardColumn = $("<div class='col s2'>");
+    var card = $("<div class='card card-selection'>");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
     var cardImage = $("<img>");
       $(cardImage).addClass("activator card-size");
       $(cardImage).attr("src", image); 
     var cardContent = $("<div class='card-content'>");
-    var cardTitle = $("<span class='card-title activator grey-text text-darken-4 truncate'>");
+    var cardTitle = $("<span class='card-title activator grey-text text-darken-4'>");
       $(cardTitle).text(name);
     var cardArrow = $("<i class='material-icons right activator waves-effect'>");
       $(cardArrow).text("arrow_drop_up");
-    var cardPrice = $("<h5> $"+price+"</h5>");
+    var cardPrice = $("<h4>"+price+"</h4>");
     var cardReveal = $("<div class='card-reveal'>");
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
       $(cardRevealTitle).text(name);
@@ -81,133 +81,97 @@ var storage = {
     cardImageHolder.append(cardImage);
     card.append(cardImageHolder, cardContent, cardReveal);
     cardColumn.append(card);
-    if (api === "walmart") {
+    if (location === "walmart") {
       $("#test").append(cardColumn);
     }
     else {
       $("#ebay-test").append(cardColumn);
     }
-    
+      
   },
-  renderCompare: function(image, name, price, description) {
-    // HTML elements for top header
-    var container = $("<container>");
+  renderCompare: function(walmartLocation, ebayLocation) {
+    $("#test").empty();
+    $("#ebay-test").empty();
+    var container = $("<div class='container'>");
     var headerDiv = $("<div class='center-align'>");
     var headerTitle = $("<h1>Compare Products</h1>");
     var headerLink = $("<a href='#'>Choose Other Products To Compare</a>");
-
-    // HTML elements for Product section
-    var section = $("<div class='section'>");
-    var row = $("div class='row'");
+    headerDiv.append(headerTitle, headerLink);
+    var sectionOne = $("<div class='section'>");
+    var sectionTwo = $("<div class='section'>");
+    var rowOne = $("<div class='row'>");
+    var rowOneTwo = $("<div class='row'>");
+    var rowOneThree = $("<div class='row'>");
+    var rowTwo = $("<div class='row'>");
     var productTitle = $("<h5>Product</h5>");
-    var diverWMargin = $("<div class='divider margin-20'>");
-
-  //   <div class="container">
-  //   <div class="center-align" id="header-wrapper">
-  //     <h1 class="center-align">Compare Products</h1>
-  //     <a href="#">Choose Other Products To Compare</a>
-  //   </div> 
-
-  //   <div class="section">
-  //     <div class="row">
-  //       <h5>Product</h5>
-  //       <div class="divider margin-20"></div>
-
-  //       <div class="col s6 center-align">
-  //         <img src="assets/images/charlie.jpg" height="300px" width="300px">
-  //         <h3 class="center-align flow-text">$49.99</h3>
-  //         <div class="center-align" id="link-wrapper">
-  //           <div class="row">
-              
-  //             <div class="col s6 offset-s3 center-align">
-  //               <a href="#" class="left">Learn More</a>
-  //               <a href="#" class="right">Add to Cart</a>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //       <div class="col s6 center-align">
-  //         <img src="assets/images/colt.jpg" height="300px" width="300px">
-  //         <h3 class="center-align flow-text">$49.99</h3>
-  //         <div class="row">
-  //           <div class="col s6 offset-s3 center-align">
-  //             <a href="#" class="left">Learn More</a>
-  //             <a href="#" class="right">Add to Cart</a>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   <div class="section">
-  //     <div class="row">
-  //       <h5>Product Description</h5>
-  //       <div class="divider"></div>
-  //       <div class="col s5">
-  //         <p class="flow-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-  //       </div>
-  //       <div class="col s5 offset-s2">
-  //         <p class="flow-text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </div>
-
+    var dividerMargin = $("<div class='divider margin-20'>");
+    var imageColumnOne = $("<div class='col s6 center-align'>");
+    var imageColumnTwo = $("<div class='col s6 center-align'>");
+    var priceOne = $("<h3 class='center=align flow-text'>");
+    $(priceOne).html(storage.walmart.response.items[walmartLocation].salePrice)
+    var priceTwo = $("<h3 class='center=align flow-text'>");
+    $(priceTwo).html(storage.ebay.response.price[ebayLocation]);
+    var linkWrapperOne = $("<div class='center-align'>");
+    var linkWrapperTwo = $("<div class='center-align'>");    
+    var linkColumnOne = $("<div class='col s6 offset-s3 center-align'>");
+    var linkColumnTwo = $("<div class='col s6 offset-s3 center-align'>");
+    var imageOne = $("<img>");
+    $(imageOne).attr("src", storage.walmart.response.items[walmartLocation].largeImage);
+    $(imageOne).addClass("card-size");
+    var imageTwo = $("<img>");
+    $(imageTwo).attr("src", storage.ebay.response.image[ebayLocation]);
+    $(imageTwo).addClass("card-size");
+    var learnMoreOne = $("<a href='#' class='left'>Learn More</a>");
+    var addToCartOne = $("<a href='#' class='right'>Add to Cart</a>");  
+    var learnMoreTwo = $("<a href='#' class='left'>Learn More</a>");
+    var addToCartTwo = $("<a href='#' class='right'>Add to Cart</a>"); 
+    var description = $("<h5>Product Description</h5>");
+    var divider = $("<div class='divider'>");
+    var colDescripOne = $("<div class='col s5'>");
+    var pDescripOne = $("<p class='flow-text'>Example Text</p>");
+    var colDescripTwo = $("<div class='col s5 offset-s2'>");
+    var pDescripTwo = $("<p class='flow-text'>Example Text</p>");
+    linkColumnOne.append(learnMoreOne, addToCartOne);            
+    rowOneTwo.append(linkColumnOne);
+    linkWrapperOne.append(rowOneTwo);
+    imageColumnOne.append(imageOne, priceOne, linkWrapperOne);
+    linkColumnTwo.append(learnMoreTwo, addToCartTwo);
+    rowOneThree.append(linkColumnTwo);
+    linkWrapperTwo.append(rowOneThree);
+    imageColumnTwo.append(imageTwo, priceTwo, linkWrapperTwo);
+    rowOne.append(productTitle, dividerMargin, imageColumnOne, imageColumnTwo);
+    sectionOne.append(rowOne);
+    colDescripOne.append(pDescripOne);
+    colDescripTwo.append(pDescripTwo);
+    rowTwo.append(description, divider, colDescripOne, colDescripTwo);
+    sectionTwo.append(rowTwo);
+    container.append(headerDiv, sectionOne, sectionTwo);
+    $("#test").append(container);
   }
 };
+// event handler for search bar
 $("#search").keypress(function(event) {
+  // stores the value of the user search
   var searchTerm = $("#search").val().trim();
+  // if key pressed is the <enter> key...
   if (event.which === 13) {
+    // call the searchHandler function passing the user search value
     searchHandler(searchTerm);
+   
   };
 });
 
+// passes the search term to the API calls
 function searchHandler (searchTerm) {
-  // prevents default submition //
-  event.preventDefault();
+  // empties the contents of the search display area
   $("#test").empty();
+
   ebay.callAPI(searchTerm);
+  // calls the walmart API method passing the search value argument
   walmart.callAPI(searchTerm);
 };
 
-var counter = 0;
-
-var compareItem1 = {
-  image: "",
-  name: "",
-  price: "",
-  description: "",
-
-};
-
-var compareItem2 = {
-  image: "",
-  name: "",
-  price: "",
-  description: "",
-}
-
-$(".card").on("click", function(){
-  counter++;
-  if (counter === 1) { //if using walmart data need to make sure clicked on walmart card
-    var index = this.attr("data-id").val();
-    var storageLocation = storage.walmart.response.items[index];
-    compareItem1.image = storageLocation.largeImage;
-    compareItem1.price = storageLocation.salePrice;
-    compareItem.name = storageLocation.name;
-    compareItem1.description = stroageLocation.description;
-  }
-  if (counter === 2) {
-    var index = this.attr("data-id").val();
-    var storageLocation = storage.ebay.response;
-    compareItem2.image = storageLocation.image[index];
-    compareItem2.name = storageLocation.name[index];
-    compareItem2.price = storageLocation.price[index];
-    compareItem2.description = storageLocation.description[index];
-    clearPage();
-  }
+// TODO: Needs to be removed once real functionality is added
+$("#yellow").click(function(){
+  storage.renderCompare(1, 1);
 });
-
-function clearPage() {
-  $(".nav-wrapper").empty();
-  $(".wrapper").empty();
-};
