@@ -158,8 +158,7 @@ $("#search").keypress(function(event) {
   var searchTerm = $("#search").val().trim();
   if (event.which === 13) {
     
-    emptyInput(searchTerm);
-    regexInput(searchTerm);
+    // userValidation(searchTerm);
     searchHandler(searchTerm);
   };
 });
@@ -215,27 +214,56 @@ function clearPage() {
   $(".wrapper").empty();
 };
 
-// function that check if user input empty value
-function emptyInput(userInput){
 
+//  compare user input input  
+function userValidation(userInput){
   
-  if(userInput==""){
-      // gotta change alert to modal later
-    alert("Please enter something");
-  };
-};// end emptyInput
+  event.preventDefault();
 
-// function that check for no RegEx (Regular Expression)
-function regexInput(userInput){
-  // allow a-z= lower alphabet A-Z= Capital alphabet, 0-9=number 0-9 
-// var regex=/^[a-zA-Z0-9]+\s?[a-zA-Z0-9]+$/;
-// regex this regex only allow lower alphabet, capital Alphabet, number, and spaces
-var regex=/^[a-zA-Z0-9_ ]*$/;
-// var regex= /^[^\W_\s]+$/;
-  if(regex.test(userInput)){
-    console.log("GOOD Job, you input no symbol")
-  }else{
-    alert("No Symbols Please!!")
-  }
+  // regex this regex only allow lower alphabet, Upper alphabet, number, and spaces
+  var regex=/^[a-zA-Z0-9 ]*$/;
 
-}// end regexInput
+    //this logic order MATTER. First, we check if the users input is empty
+    if(userInput == ""){
+    
+      $(".modalText").text("Please input something.We worked hard for it!!");
+     
+      renderingModal();
+    }
+
+    //Second, we compare users input with our regex. 
+    else if(regex.test(userInput)){
+      
+      console.log("asds no symbol")
+      
+    }
+    // Last, when we find special characters in users input
+    else{
+      
+      $(".modalText").text("Don't put any special characters BRO!!!");
+
+      renderingModal();
+    
+    }
+
+};// end regexInput
+
+// function  to render pop up modal for user validation
+function renderingModal(){
+ 
+  var modal= $("#validationModal").css("display","block");
+
+  $(".closeModal").on("click",function(){
+
+    $(modal).css("display","None");
+
+  });
+
+  // $(window).on("click",function(event){
+    
+  //   if (event.target == modal) {
+      
+  //     $(modal).css("display","None");
+  // }
+  // });
+};
