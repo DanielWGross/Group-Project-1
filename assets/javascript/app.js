@@ -58,6 +58,7 @@ var storage = {
 
   renderElements: function(api, location, image, name, model, price, description) {
     // console.log("Render Elements Running!");
+    var checkBox = $("<input type='checkBox'>"); //add check box selected/unselected
     var cardColumn = $("<div class='col xl2 col l3  col m4  col  s12  col xs12'>");
     var card = $("<div class='card card-selection' data-id=" + location + ">");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
@@ -74,13 +75,16 @@ var storage = {
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
       $(cardRevealTitle).text(name);
     var cardClose = $("<i class='material-icons right'>close</i>");
+    var checker = $("<div class ='unSelected selected'>")
+
+    checker.append(checkBox);
     cardRevealTitle.append(cardClose);
     cardReveal.append(cardRevealTitle);
     cardTitle.append(cardArrow);
     cardContent.append(cardTitle, cardPrice);
     cardImageHolder.append(cardImage);
     card.append(cardImageHolder, cardContent, cardReveal);
-    cardColumn.append(card);
+    cardColumn.append(checker, card);
     if (api === "walmart") {
       $("#test").append(cardColumn);
     }
@@ -93,7 +97,7 @@ var storage = {
     // HTML elements for top header
     var container = $("<container>");
     var headerDiv = $("<div class='center-align'>");
-    var headerTitle = $("<h1>Compare Products</h1>");
+    var headerTitle = $("<h3>Compare Products</h3>");
     var headerLink = $("<a href='#'>Choose Other Products To Compare</a>");
 
     // HTML elements for Product section
