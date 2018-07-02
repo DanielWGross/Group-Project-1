@@ -158,8 +158,10 @@ $("#search").keypress(function(event) {
   var searchTerm = $("#search").val().trim();
   if (event.which === 13) {
     
-    // userValidation(searchTerm);
+    userValidation(searchTerm);
     searchHandler(searchTerm);
+  //  userValidation( searchHandler(searchTerm));
+    
   };
 });
 
@@ -167,7 +169,8 @@ function searchHandler (searchTerm) {
   // prevents default submition //
   event.preventDefault();
   $("#test").empty();
-  ebay.callAPI(searchTerm);
+  $("#ebay-test").empty();
+  // ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
 };
 
@@ -234,13 +237,13 @@ function userValidation(userInput){
     //Second, we compare users input with our regex. 
     else if(regex.test(userInput)){
       
-      console.log("asds no symbol")
+      console.log("yeahh NO Symbols")
       
     }
     // Last, when we find special characters in users input
     else{
       
-      $(".modalText").text("Don't put any special characters BRO!!!");
+      $(".modalText").text("Please Try Again!");
 
       renderingModal();
     
