@@ -232,7 +232,7 @@ function clearPage() {
 };
 
 
-//  compare user input input  
+//  Compare  user input with our restriction.  
 function userValidation(userInput){
   
   event.preventDefault();
@@ -243,7 +243,7 @@ function userValidation(userInput){
     //this logic order MATTER. First, we check if the users input is empty
     if(userInput == ""){
       console.log("User input is Empty");
-      $(".modalText").text("Please input something.We worked hard for it!!");
+      $(".modalText").text("Please input something.We worked hard for it!");
      
         renderingModal();
         return false;
@@ -252,14 +252,14 @@ function userValidation(userInput){
     //Second, we check if users input with our regex. 
     else if(regex.test(userInput)){
       
-      console.log("No special character! it should go through and give the result");
+      console.log("No special character or Symbols! it should go through and give the result");
       return true;
     }
-    // Last, when we find special characters in users input
+    // Last, when we find special characters or symbols in users input
     else{
       
       console.log("Special characters in user input")
-      $(".modalText").text(" Dont' insert any special characters, please try again");
+      $(".modalText").text(" Dont' insert any special characters or symbols, please try again");
 
       renderingModal();
 
@@ -276,6 +276,7 @@ function renderingModal(){
 
   $(".closeModal").on("click",function(){
 
+    // hide  the modal box after click "X"
     $(modal).css("display","None");
 
   });
