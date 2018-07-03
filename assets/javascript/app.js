@@ -165,9 +165,23 @@ var storage = {
   }
 };
 $("#search").keypress(function(event) {
+  
   var searchTerm = $("#search").val().trim();
+ 
+  
   if (event.which === 13) {
-    searchHandler(searchTerm);
+    
+   var afterValidate= userValidation(searchTerm);
+    if(afterValidate === true){
+      // console.log(storage);
+      searchHandler(searchTerm);
+      $("#search").val("");
+    }
+    else{
+      $("#search").val("");
+      console.log(storage);
+       return;
+      }
   };
 });
 
@@ -175,6 +189,7 @@ function searchHandler (searchTerm) {
   // prevents default submition //
   event.preventDefault();
   $("#test").empty();
+  console.log("Walmart is working");
   ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
 };
@@ -251,4 +266,44 @@ $(document).on("click",".selectPrice", function() {
 $(document).on("click", "#newSearch", function () {
   console.log("test");
 });
+
+// compare user input with our restriction
+function userValidation(userInput){
+  event.preventDefault();
+
+  // This Regular Expression only allow lower alphabet, Upper alphabet, number, and spaces between words
+  var regex= /^[a-zA-Z0-9 "']*$/;
+
+  // first, we heck if the input is empty
+  if(userInput == ""){
+    console.log("is empty");
+    $(".modalText").text("Please input something.We worked hard for it!");
+    renderingModal();
+    return false;
+  }
+  else if(regex.test(userInput)){
+
+    console.log("No special character or Symbols! it should go through and give the result");
+    return true;
+  }
+  // Last, when we find special characters or symbols in users input
+  else{
+    console.log("Special characters in user input")
+    $(".modalText").text(" Dont' insert any special characters or symbols, please try again");
+
+    renderingModal();
+    return false;
+  }
+};
+
+// rendering pop up modal box
+function renderingModal(){
+
+  var modal= $("#validationModal").css("display","block");
+  $(".closeModal").on("click",function(){
+
+    // hide  the modal box after click "X"
+    $(modal).css("display","None");
+  });
+};
 
