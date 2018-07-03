@@ -6,6 +6,7 @@
     border-color: gold;
     border-width: 3px;
 }
+
 .card-size {
     height: 225px!important;
     width: 225px!important;
@@ -61,7 +62,9 @@ p {
     text-align: justify;
 }
 
-
+.unselected{
+    background-color: green;
+}
 
 
 /* CSS for animation title */
@@ -101,4 +104,3 @@ p {
     font-size: 30px;
     color:greenyellow;
 }
-

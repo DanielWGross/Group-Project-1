@@ -32,7 +32,7 @@ var storage = {
         storage.renderElements("walmart", i, image, name, model, price, description);
       };
     }
-    },
+  },
   ebay : {
     response: {
       name: [],
@@ -61,6 +61,14 @@ var storage = {
 
   renderElements: function(api, location, image, name, model, price, description) {
     // console.log("Render Elements Running!");
+
+    var checkBox = $("<i class='material-icons btn-Medium waves-effect waves-light'>");
+    $(checkBox).text("add_box");
+    $(checkBox).addClass("selectPrice");
+
+    //initial data-state for later use
+    checkBox.attr("data-state", "unchecked");
+
     var cardColumn = $("<div class='col xl2 col l3  col m4  col  s12  col xs12'>");
     var card = $("<div class='card card-selection' data-id=" + location + ">");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
@@ -77,12 +85,13 @@ var storage = {
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
       $(cardRevealTitle).html(description);
     var cardClose = $("<i class='material-icons right'>close</i>");
+
     cardRevealTitle.append(cardClose);
     cardReveal.append(cardRevealTitle);
     cardTitle.append(cardArrow);
     cardContent.append(cardTitle, cardPrice);
     cardImageHolder.append(cardImage);
-    card.append(cardImageHolder, cardContent, cardReveal);
+    card.append(checkBox, cardImageHolder, cardContent, cardReveal);
     cardColumn.append(card);
     if (api === "walmart") {
       $("#test").append(cardColumn);
@@ -216,10 +225,31 @@ function clearPage() {
 // TODO: Needs to be removed once real functionality is added
 $("#yellow").click(function(){
   storage.renderCompare(1, 1);
+}); 
+
+//on click change color and add to compare box
+$(document).on("click",".selectPrice", function() {
+  // Get the current data-state
+  var state = $(this).attr("data-state");
+  
+  // If data-state is clicked change color and add comparePrice function 
+  //change the data-state to checked
+  
+  if (state === "unchecked") {
+    $(this).attr("data-state", "checked");
+    $(this).addClass("green");
+
+    //then call comparPrice function
+  } else{
+    $(this).attr("data-state", "unchecked");
+    $(this).removeClass("green");
+
+    //then call comparPrice function
+  }
+
+});
 });
 $(document).on("click", "#newSearch", function () {
   console.log("test");
 });
-
-
 
