@@ -246,9 +246,8 @@ $(document).on("click",".selectPrice", function() {
 
     //then call comparPrice function
   }
+});
 
-});
-});
 $(document).on("click", "#newSearch", function () {
   console.log("test");
 });
