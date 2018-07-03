@@ -10,10 +10,13 @@ var storage = {
     apiReturn: false,
     // Will extract relevant data from the JSON call and pass to render function
     pullData: function() {
+      if(this.apiReturn===true){
       for (i= 0; i < numResults; i++) {
-        // console.log("Pull Data Running!");
+        // console.log(apiReturn);
+        console.log("Pull Data Running!");
         // variable to store location to avoid repetive typing
         var location = this.response.items[i];
+        
         // largest image size avaliable
         var image = location.largeImage;
         // name contains short name and short description
@@ -29,6 +32,7 @@ var storage = {
         // TODO: Create renderfunction
         storage.renderElements("walmart", i, image, name, model, price, description);
       };
+    };
     }
     },
   ebay : {
@@ -156,12 +160,23 @@ var storage = {
 };
 $("#search").keypress(function(event) {
   var searchTerm = $("#search").val().trim();
+      
+    // console.log("test "+searchTerm);
+    
   if (event.which === 13) {
-    
-    userValidation(searchTerm);
-    searchHandler(searchTerm);
-  //  userValidation( searchHandler(searchTerm));
-    
+
+    // check if user validate
+    var afterValidate =userValidation(searchTerm);
+        if (afterValidate === true){
+          searchHandler(searchTerm);
+        }else{
+          console.log(storage);
+          return;
+         
+        }
+    // searchHandler(afterValidate);
+    // console.log(storage);
+    // storage.walmart.apiReturn="dog crate";
   };
 });
 
@@ -170,7 +185,7 @@ function searchHandler (searchTerm) {
   event.preventDefault();
   $("#test").empty();
   $("#ebay-test").empty();
-  // ebay.callAPI(searchTerm);
+  ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
 };
 
@@ -222,34 +237,45 @@ function clearPage() {
 function userValidation(userInput){
   
   event.preventDefault();
-
+  
   // regex this regex only allow lower alphabet, Upper alphabet, number, and spaces
   var regex=/^[a-zA-Z0-9 ]*$/;
 
     //this logic order MATTER. First, we check if the users input is empty
     if(userInput == ""){
-    
+      console.log("no input");
       $(".modalText").text("Please input something.We worked hard for it!!");
      
+  //     $("#test").empty();
+  // $("#ebay-test").empty();
       renderingModal();
+      
+    // return test="dog crate";
+      return false;;
+      
+    
     }
 
-    //Second, we compare users input with our regex. 
+    // //Second, we compare users input with our regex. 
     else if(regex.test(userInput)){
       
       console.log("yeahh NO Symbols")
-      
+      return true;
     }
     // Last, when we find special characters in users input
     else{
       
+      console.log("there's symbols")
       $(".modalText").text("Please Try Again!");
 
+    //   $("#test").empty();
+    // $("#ebay-test").empty();
       renderingModal();
-    
+
+      return false;
     }
 
-};// end regexInput
+};// end userValidation
 
 // function  to render pop up modal for user validation
 function renderingModal(){
@@ -270,3 +296,4 @@ function renderingModal(){
   // }
   // });
 };
+

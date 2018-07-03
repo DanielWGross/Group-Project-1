@@ -11,6 +11,7 @@ var walmart = {
       url: this.productSearch + searchTerm,
       method: "GET"
     }).then(function(response) {
+      console.log(response);
       // TODO: Remove this after testing
       console.log("Done!");
       // Send the response to the global variable
