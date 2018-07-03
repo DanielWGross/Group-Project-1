@@ -169,12 +169,14 @@ $("#search").keypress(function(event) {
         if (afterValidate === true){
           console.log(storage);
           searchHandler(searchTerm);
-
+          $("#search").val(""); 
         }else{
-
+          $("#search").val("");
           console.log(storage);
            return;
+           
         }
+      
   };
 
 });
@@ -238,7 +240,7 @@ function userValidation(userInput){
   event.preventDefault();
   
   // This Regular Expression only allow lower alphabet, Upper alphabet, number, and spaces between words
-  var regex= /^[a-zA-Z0-9 ]*$/;
+  var regex= /^[a-zA-Z0-9 "']*$/;
 
     //this logic order MATTER. First, we check if the users input is empty
     if(userInput == ""){
