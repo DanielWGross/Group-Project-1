@@ -1,4 +1,6 @@
-  // Storing number of results as a variable gloablly. Should look to implement a user setting
+
+
+// Storing number of results as a variable gloablly. Should look to implement a user setting
 var numResults = 5;
 // Gloabl variable which will house the JSON from the AJAX calls to pass on to other functions
 var storage = {
@@ -55,6 +57,7 @@ var storage = {
     }
   },
 
+  
 
   renderElements: function(api, location, image, name, model, price, description) {
     // console.log("Render Elements Running!");
@@ -74,13 +77,13 @@ var storage = {
       $(cardImage).attr("src", image); 
     var cardContent = $("<div class='card-content'>");
     var cardTitle = $("<span class='card-title activator grey-text text-darken-4 truncate'>");
-      $(cardTitle).text(name);
+      $(cardTitle).html(name);
     var cardArrow = $("<i class='material-icons right activator waves-effect'>");
       $(cardArrow).text("arrow_drop_up");
     var cardPrice = $("<h5> $"+price+"</h5>");
     var cardReveal = $("<div class='card-reveal'>");
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
-      $(cardRevealTitle).text(name);
+      $(cardRevealTitle).html(description);
     var cardClose = $("<i class='material-icons right'>close</i>");
 
     cardRevealTitle.append(cardClose);
@@ -106,8 +109,8 @@ var storage = {
     $("#ebay-test").empty();
     var container = $("<div class='container'>");
     var headerDiv = $("<div class='center-align'>");
-    var headerTitle = $("<h3>Compare Products</h3>");
-    var headerLink = $("<a href='#'>Choose Other Products To Compare</a>");
+    var headerTitle = $("<h1>Compare Products</h1>");
+    var headerLink = $("<p id='newSearch' class='center-align blue-text'>Choose Other Products To Compare</p>");
     headerDiv.append(headerTitle, headerLink);
     var sectionOne = $("<div class='section'>");
     var sectionTwo = $("<div class='section'>");
@@ -120,9 +123,9 @@ var storage = {
     var imageColumnOne = $("<div class='col s6 center-align'>");
     var imageColumnTwo = $("<div class='col s6 center-align'>");
     var priceOne = $("<h3 class='center=align flow-text'>");
-    $(priceOne).html(storage.walmart.response.items[walmartLocation].salePrice)
+    $(priceOne).html("$"+storage.walmart.response.items[walmartLocation].salePrice)
     var priceTwo = $("<h3 class='center=align flow-text'>");
-    $(priceTwo).html(storage.ebay.response.price[ebayLocation]);
+    $(priceTwo).html("$"+storage.ebay.response.price[ebayLocation]);
     var linkWrapperOne = $("<div class='center-align'>");
     var linkWrapperTwo = $("<div class='center-align'>");    
     var linkColumnOne = $("<div class='col s6 offset-s3 center-align'>");
@@ -133,21 +136,21 @@ var storage = {
     var imageTwo = $("<img>");
     $(imageTwo).attr("src", storage.ebay.response.image[ebayLocation]);
     $(imageTwo).addClass("card-size");
-    var learnMoreOne = $("<a href='#' class='left'>Learn More</a>");
-    var addToCartOne = $("<a href='#' class='right'>Add to Cart</a>");  
-    var learnMoreTwo = $("<a href='#' class='left'>Learn More</a>");
-    var addToCartTwo = $("<a href='#' class='right'>Add to Cart</a>"); 
+    var addToCartOne = $("<a href="+ storage.walmart.response.items[walmartLocation].addToCartUrl + " class='right' target='_blank'>Add to Cart</a>");
+    var learnMoreOne = $("<a href="+ storage.walmart.response.items[walmartLocation].productUrl + " class='left' target='_blank'>Learn More</a>");  
+    var addToCartTwo = $("<a href="+ storage.ebay.response.URL[ebayLocation] + " class='right' target='_blank'>Add to Cart</a>");
+    var learnMoreTwo = $("<a href="+ storage.ebay.response.URL[ebayLocation] + " class='left' target='_blank'>Learn More</a>");  
     var description = $("<h5>Product Description</h5>");
     var divider = $("<div class='divider'>");
     var colDescripOne = $("<div class='col s5'>");
-    var pDescripOne = $("<p class='flow-text'>Example Text</p>");
+    var pDescripOne = $("<p class='flow-text'>" + storage.walmart.response.items[walmartLocation].name + "</p>");
     var colDescripTwo = $("<div class='col s5 offset-s2'>");
-    var pDescripTwo = $("<p class='flow-text'>Example Text</p>");
-    linkColumnOne.append(learnMoreOne, addToCartOne);            
+    var pDescripTwo = $("<p class='flow-text'>" + storage.ebay.response.name[ebayLocation] + "</p>");
+    linkColumnOne.append(addToCartOne, learnMoreOne);            
     rowOneTwo.append(linkColumnOne);
     linkWrapperOne.append(rowOneTwo);
     imageColumnOne.append(imageOne, priceOne, linkWrapperOne);
-    linkColumnTwo.append(learnMoreTwo, addToCartTwo);
+    linkColumnTwo.append(addToCartTwo, learnMoreTwo);
     rowOneThree.append(linkColumnTwo);
     linkWrapperTwo.append(rowOneThree);
     imageColumnTwo.append(imageTwo, priceTwo, linkWrapperTwo);
@@ -224,7 +227,6 @@ $("#yellow").click(function(){
   storage.renderCompare(1, 1);
 }); 
 
-
 //on click change color and add to compare box
 $(document).on("click",".selectPrice", function() {
   // Get the current data-state
@@ -246,3 +248,8 @@ $(document).on("click",".selectPrice", function() {
   }
 
 });
+});
+$(document).on("click", "#newSearch", function () {
+  console.log("test");
+});
+

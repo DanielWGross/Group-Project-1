@@ -13,7 +13,7 @@ var ebay = {
 
     callAPI: function(queryTerm) {
         $.ajax({
-            url: ebay.queryURL + queryTerm,
+            url: 'https://cors-anywhere.herokuapp.com/' + ebay.queryURL + queryTerm,
             method: "GET",
             dataType: 'json'
           }).then(function(response) {
@@ -27,7 +27,7 @@ var ebay = {
                 storage.ebay.response.description.push(title);
           
                 $.ajax({
-                  url: ebay.queryURL2 + productNumber,
+                  url: 'https://cors-anywhere.herokuapp.com/' + ebay.queryURL2 + productNumber,
                   method: "GET",
                   dataType: 'json',
                   })
