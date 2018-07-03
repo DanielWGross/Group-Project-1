@@ -1,19 +1,16 @@
 var ebay = {
-    queryURL: "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=Michaela-PriceCom-PRD-87141958a-d757ba3a&outputSelector=PictureURLSuperSize&itemFilter(0).name=HideDuplicateItems&itemFilter(0).value=true&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=",
+    queryURL: "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=",
+    apiKey: localStorage.getItem("ebaySearch"),
+    searchURL: "&outputSelector=PictureURLSuperSize&itemFilter(0).name=HideDuplicateItems&itemFilter(0).value=true&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=",
+    
+    queryURL2: "http://open.api.ebay.com/shopping?callname=GetMultipleItems&responseencoding=JSON&appid=",
+    searchURL2: "&siteid=0&version=713&ItemID=",
+    apiKey2: localStorage.getItem("ebayShop"),
 
-    queryURL2: "http://open.api.ebay.com/shopping?callname=GetMultipleItems&responseencoding=JSON&appid=Michaela-PriceCom-PRD-87141958a-d757ba3a&siteid=0&version=713&ItemID=",
-
-    // results: {
-    //     name: [],
-    //     image: [],
-    //     price: [],
-    //     description: [],
-    //     URL: [],
-    // },
 
     callAPI: function(queryTerm) {
         $.ajax({
-            url: 'https://cors-anywhere.herokuapp.com/' + ebay.queryURL + queryTerm,
+            url: 'https://cors-anywhere.herokuapp.com/' + ebay.queryURL + ebay.apiKey + ebay.searchURL + queryTerm,
             method: "GET",
             dataType: 'json'
           }).then(function(response) {
@@ -27,7 +24,7 @@ var ebay = {
                 storage.ebay.response.description.push(title);
           
                 $.ajax({
-                  url: 'https://cors-anywhere.herokuapp.com/' + ebay.queryURL2 + productNumber,
+                  url: 'https://cors-anywhere.herokuapp.com/' + ebay.queryURL2 + ebay.apiKey2 + ebay.searchURL2 + productNumber,
                   method: "GET",
                   dataType: 'json',
                   })

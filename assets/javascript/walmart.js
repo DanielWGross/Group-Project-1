@@ -4,11 +4,15 @@ var walmart = {
   // API Call for product lookup by ID number
   productLookup: "https://api.walmartlabs.com/v1/items/12417832?apiKey=dc7fkr9e5rwbbaqj3e42nbnn",
   // API call for product by search term
-  productSearch: "https://api.walmartlabs.com/v1/search?apiKey=dc7fkr9e5rwbbaqj3e42nbnn&query=",
+  productSearch: "https://api.walmartlabs.com/v1/search?apiKey=",
+  // Gets API key from local storage. Added via api.html
+  apiKey: localStorage.getItem("walmartSearch"),
+  //Search Query variable for API call
+  productQuery: "&query=", 
   // receives argument from user entry
   callAPI: function(searchTerm) {
     $.ajax({
-      url: this.productSearch + searchTerm,
+      url: this.productSearch + this.apiKey + this.productQuery + searchTerm,
       method: "GET"
     }).then(function(response) {
       // TODO: Remove this after testing
