@@ -1,3 +1,7 @@
+#newSearch:hover {
+    cursor: pointer;
+}
+
 .card:hover {
     border-color: gold;
     border-width: 3px;
