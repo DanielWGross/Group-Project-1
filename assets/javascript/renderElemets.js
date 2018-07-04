@@ -37,8 +37,8 @@ var renderElements = {
     var template = `
       <div class="col s2">
         <div class="card medium card-selection" data-id=${location}>
-        <label for="checkbox-${location}">
-        <input type="checkbox" id="checkbox-${location}" class="filled-in">
+        <label for="checkbox-${api}${location}">
+        <input type="checkbox" id="checkbox-${api}${location}" class="filled-in">
         <span>Compare</span>
         </label>
           <div class="card-image waves-effect waves-block waves-light">
