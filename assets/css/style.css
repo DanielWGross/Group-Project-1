@@ -2,39 +2,39 @@
     cursor: pointer;
 }
 
-.card:hover {
+/* .card:hover {
     border-color: gold;
     border-width: 3px;
-}
+} */
 
-.card-size {
+/* .card-size {
     height: 225px!important;
     width: 225px!important;
-}
+} */
 
 .no-left-margin {
     margin-left: 0!important;
 }
 
-.card {
+/* .card {
     padding-left: 25px;
     padding-right: 25px;
-}
+} */
 
-body {
+/* body {
     width: 100%;
    
-}
+} */
 
 .wrapper {
     width: 90%;
 }
 
-.card-selection{
-    margin: 20px 200px 0px 200px;
+/* .card-selection{
+    margin: 20px 20px 0px 20px;
     padding: 0px;
     width: 200px;
-}
+} */
 /* animation LOGO */
 #img-logo{
 position: relative;
