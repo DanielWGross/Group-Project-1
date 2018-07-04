@@ -7,10 +7,10 @@
     border-width: 3px;
 } */
 
-/* .card-size {
+.card-size {
     height: 225px!important;
     width: 225px!important;
-} */
+}
 
 .no-left-margin {
     margin-left: 0!important;
@@ -21,10 +21,10 @@
     padding-right: 25px;
 } */
 
-/* body {
-    width: 100%;
+body {
+    font-family: 'Montserrat', sans-serif;
    
-} */
+}
 
 .wrapper {
     width: 90%;

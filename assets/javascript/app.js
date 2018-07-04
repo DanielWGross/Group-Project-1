@@ -112,10 +112,11 @@ var storage = {
   renderCompare: function(walmartLocation, ebayLocation) {
     $("#test").empty();
     $("#ebay-test").empty();
+    $("body").empty();
     var container = $("<div class='container'>");
     var headerDiv = $("<div class='center-align'>");
     var headerTitle = $("<h1>Compare Products</h1>");
-    var headerLink = $("<p id='newSearch' class='center-align blue-text'>Choose Other Products To Compare</p>");
+    var headerLink = $("<p id='newSearch' class='center-align teal-text lighten-2'>Choose Other Products To Compare > </p>");
     headerDiv.append(headerTitle, headerLink);
     var sectionOne = $("<div class='section'>");
     var sectionTwo = $("<div class='section'>");
@@ -124,7 +125,7 @@ var storage = {
     var rowOneThree = $("<div class='row'>");
     var rowTwo = $("<div class='row'>");
     var productTitle = $("<h5>Product</h5>");
-    var dividerMargin = $("<div class='divider margin-20'>");
+    var dividerMargin = $("<div class='divider teal lighten-2 margin-20'>");
     var imageColumnOne = $("<div class='col s6 center-align'>");
     var imageColumnTwo = $("<div class='col s6 center-align'>");
     var priceOne = $("<h3 class='center=align flow-text'>");
@@ -141,12 +142,12 @@ var storage = {
     var imageTwo = $("<img>");
     $(imageTwo).attr("src", storage.ebay.response.image[ebayLocation]);
     $(imageTwo).addClass("card-size");
-    var addToCartOne = $("<a href="+ storage.walmart.response.items[walmartLocation].addToCartUrl + " class='right' target='_blank'>Add to Cart</a>");
-    var learnMoreOne = $("<a href="+ storage.walmart.response.items[walmartLocation].productUrl + " class='left' target='_blank'>Learn More</a>");  
-    var addToCartTwo = $("<a href="+ storage.ebay.response.URL[ebayLocation] + " class='right' target='_blank'>Add to Cart</a>");
-    var learnMoreTwo = $("<a href="+ storage.ebay.response.URL[ebayLocation] + " class='left' target='_blank'>Learn More</a>");  
+    var addToCartOne = $("<a href="+ storage.walmart.response.items[walmartLocation].addToCartUrl + " class='right teal-text lighten-2' target='_blank'>Add to Cart > </a>");
+    var learnMoreOne = $("<a href="+ storage.walmart.response.items[walmartLocation].productUrl + " class='left teal-text lighten-2' target='_blank'>Learn More > </a>");  
+    var addToCartTwo = $("<a href="+ storage.ebay.response.URL[ebayLocation] + " class='right teal-text lighten-2' target='_blank'>Add to Cart > </a>");
+    var learnMoreTwo = $("<a href="+ storage.ebay.response.URL[ebayLocation] + " class='left teal-text lighten-2' target='_blank'>Learn More > </a>");  
     var description = $("<h5>Product Description</h5>");
-    var divider = $("<div class='divider'>");
+    var divider = $("<div class='divider teal lighten-2'>");
     var colDescripOne = $("<div class='col s5'>");
     var pDescripOne = $("<p class='flow-text'>" + storage.walmart.response.items[walmartLocation].name + "</p>");
     var colDescripTwo = $("<div class='col s5 offset-s2'>");
@@ -166,7 +167,7 @@ var storage = {
     rowTwo.append(description, divider, colDescripOne, colDescripTwo);
     sectionTwo.append(rowTwo);
     container.append(headerDiv, sectionOne, sectionTwo);
-    $("#test").append(container);
+    $("body").append(container);
   }
 };
 $("#search").keypress(function(event) {
