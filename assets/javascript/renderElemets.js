@@ -44,7 +44,7 @@ var renderElements = {
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator margin-lr-auto card-size" src=${image}>
           </div>
-          <div class="card-content">
+          <div class="card-content teal lighten-2">
             <span class="card-title activator grey-text text-darken-4 truncate">${name}<i class="material-icons right activator waves-effect">arrow_drop_up</i></span>
             <h5>$ ${price}</h5>
           </div>
