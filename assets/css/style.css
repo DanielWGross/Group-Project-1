@@ -103,4 +103,7 @@ p {
     background-color: green;
 }
 
-
+.search-height {
+    height:64px !important;
+    margin: 0px !important;
+}
