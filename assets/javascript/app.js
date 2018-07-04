@@ -48,6 +48,8 @@ var storage = {
 $("#search").keypress(function(event) {
     var searchTerm = $("#search").val().trim();
      if (event.which === 13) {
+
+      $("#img-logo").remove();
       ajaxLoader();
        var afterValidate= userValidation(searchTerm);
     if(afterValidate === true){
@@ -148,4 +150,12 @@ $(document).ready(function(){
   });
  
 });
+};
+
+function moneyFormatting(){
+
+  var moneyForm= $("#moneyFormat").text().slice(-2);
+  moneyForm.css("font-size", "20px");
+  
+
 };

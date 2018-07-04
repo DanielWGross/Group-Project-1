@@ -32,18 +32,19 @@ body {
 /* animation LOGO */
 #img-logo{
 position: relative;
+width: 50%;
+height:auto;
+left:300px;
 animation-name: logoAnimation;
-animation-duration:3s;
-height:200px; 
-width: 280px;
+animation-duration:5s;
 }
 
 @keyframes logoAnimation{
-    0%   {left:-300px; top:0px;}
-    25%  {transform: rotate(45deg);left:20px; top:0px;} 
-    50%  {transform: rotate(360deg);left:-150px; top:0px;}
-    75%  { transform: rotateY(360deg);left:0px; top:0px;}
-    100% { left:0px; top:0px;} 
+    0%   {opacity:0};
+    25%  {opacity:0.1}; 
+    50%  {opacity:0.3};
+    75%  {opacity:0.6};
+    100% {opacity:1}; 
 }
 /* end animation LOGO */
 
@@ -67,3 +68,4 @@ p {
     position: relative;
 
 }
+
