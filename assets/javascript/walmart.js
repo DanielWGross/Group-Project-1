@@ -1,8 +1,6 @@
 // Walmart API Documentation can be found below
 // https://developer.walmartlabs.com/docs
 var walmart = {
-  // API Call for product lookup by ID number
-  productLookup: "https://api.walmartlabs.com/v1/items/12417832?apiKey=dc7fkr9e5rwbbaqj3e42nbnn",
   // API call for product by search term
   productSearch: "https://api.walmartlabs.com/v1/search?apiKey=",
   // Gets API key from local storage. Added via api.html
