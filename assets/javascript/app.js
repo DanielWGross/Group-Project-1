@@ -277,8 +277,9 @@ function userValidation(userInput){
   // first, we heck if the input is empty
   if(userInput == ""){
     console.log("is empty");
-    $(".modalText").text("Please input something.We worked hard for it!");
-    renderingModal();
+    vex.dialog.alert('Please enter a product to search.')
+    // $(".modalText").text("Please enter a product to search.");
+    // renderingModal();
     return false;
   }
   else if(regex.test(userInput)){
@@ -289,21 +290,22 @@ function userValidation(userInput){
   // Last, when we find special characters or symbols in users input
   else{
     console.log("Special characters in user input")
-    $(".modalText").text(" Dont' insert any special characters or symbols, please try again");
+    vex.dialog.alert('Please enter your search again without any special characters. (Example: $, @, #, etc)')
+    // $(".modalText").text("Please enter your search again without any special characters. (Example: $, @, #, etc)");
 
-    renderingModal();
+    // renderingModal();
     return false;
   }
 };
 
 // rendering pop up modal box
-function renderingModal(){
+// function renderingModal(){
 
-  var modal= $("#validationModal").css("display","block");
-  $(".closeModal").on("click",function(){
+//   var modal= $("#validationModal").css("display","block");
+//   $(".closeModal").on("click",function(){
 
-    // hide  the modal box after click "X"
-    $(modal).css("display","None");
-  });
-};
+//     // hide  the modal box after click "X"
+//     $(modal).css("display","None");
+//   });
+// };
 
