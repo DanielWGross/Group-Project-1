@@ -152,10 +152,3 @@ $(document).ready(function(){
 });
 };
 
-function moneyFormatting(){
-
-  var moneyForm= $("#moneyFormat").text().slice(-2);
-  moneyForm.css("font-size", "20px");
-  
-
-};
