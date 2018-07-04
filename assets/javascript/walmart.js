@@ -13,8 +13,6 @@ var walmart = {
       url: this.productSearch + this.apiKey + this.productQuery + searchTerm,
       method: "GET"
     }).then(function(response) {
-      // TODO: Remove this after testing
-      console.log("Walmart is working");
       // Send the response to the global variable
       storage.walmart.response = response;
       // Update the state of the api return value to true
