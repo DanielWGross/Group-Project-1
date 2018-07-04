@@ -223,26 +223,6 @@ $("#yellow").click(function(){
   storage.renderCompare(1, 1);
 }); 
 
-//on click change color and add to compare box
-$(document).on("click",".selectPrice", function() {
-  // Get the current data-state
-  var state = $(this).attr("data-state");
-  
-  // If data-state is clicked change color and add comparePrice function 
-  //change the data-state to checked
-  
-  if (state === "unchecked") {
-    $(this).attr("data-state", "checked");
-    // checked='checked'
-    $(this).addClass("selectPrice");
-    $(this).addClass("green");
-    //then call comparPrice function
-  } else{
-    $(this).attr("data-state", "unchecked");
-    $(this).removeClass("green");
-    //then call comparPrice function
-  }
-});
 
 $(document).on("click", "#newSearch", function () {
   console.log("test");
