@@ -303,15 +303,3 @@ function userValidation(userInput){
     return false;
   }
 };
-
-// rendering pop up modal box
-// function renderingModal(){
-
-//   var modal= $("#validationModal").css("display","block");
-//   $(".closeModal").on("click",function(){
-
-//     // hide  the modal box after click "X"
-//     $(modal).css("display","None");
-//   });
-// };
-
