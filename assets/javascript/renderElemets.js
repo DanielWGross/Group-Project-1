@@ -1,6 +1,40 @@
 var renderElements = {
-  renderCard: function(api, location, image, name, price, description) {
-    var templateCard = `
+  renderSearch: function() {
+    var template = `
+      <button id="yellow">CLICK ME!</button>  
+      <nav class="margin-20">
+        <div class="nav-wrapper teal lighten-2">
+          <div class="row">
+            <div class="col s3"></div>
+            <div class="col s9">
+              <form>
+              <div class="input-field search-height">
+                <input id="search" type="search" placeholder="Search, Compare, Conquer!">
+                <label for="search"><i class="material-icons">search</i></label>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="wrapper">
+        <div class="row">
+          <div class="col s1"></div>
+          <div id="walmart"></div>
+        </div>
+        <div class="row">
+          <div class="col s1"></div>
+          <div id="ebay"></div>
+        </div>
+      </div>
+    `
+    $("body").empty();
+    $("body").append(template);
+  },
+  
+  renderCard: function(api, location, image, name, price) {
+    var template = `
       <div class="col s2">
         <div class="card medium card-selection" data-id=${location}>
         <label for="checkbox-${location}">
@@ -21,9 +55,80 @@ var renderElements = {
       </div>
     `
     if (api === "walmart") {
-      $("#test").append(templateCard);
+      $("#walmart").append(template);
     } else {
-      $("#ebay-test").append(templateCard);
+      $("#ebay").append(template);
     }
   }, 
+  renderCompare: function(walmartIndex, ebayIndex) {
+    var walmart = {
+      name: storage.walmart.response.items[walmartIndex].name,
+      price: storage.walmart.response.items[walmartIndex].salePrice,
+      image: storage.walmart.response.items[walmartIndex].largeImage,
+      addCart: storage.walmart.response.items[walmartIndex].addToCartUrl,
+      learnMore: storage.walmart.response.items[walmartIndex].productUrl
+    };
+    var ebay = {
+      name: storage.ebay.response.name[ebayIndex],
+      price: storage.ebay.response.price[ebayIndex],
+      image: storage.ebay.response.image[ebayIndex],
+      addCart: storage.ebay.response.URL[ebayIndex],
+      learnMore: storage.ebay.response.URL[ebayIndex]
+    };
+
+    var template = `
+      <div class="container">
+        <div class="center-align">
+          <h1>Compare Products</h1>
+          <p id="newSearch" class="center-align teal-text lighten-2">Choose Other Products To Compare > </p>
+        </div>
+        <div class="section">
+          <div class="row">
+            <h5>Product</h5>
+            <div class="divider teal lighten-2 margin-20"></div>
+            <div class="col s6 center-align">
+              <img src="${walmart.image}" class="card-size" />
+              <h3 class="center=align flow-text">$${walmart.price}</h3>
+              <div class="center-align">
+                <div class="row">
+                  <div class="col s6 offset-s3 center-align">
+                    <a href="${walmart.addCart}" class="right teal-text lighten-2" target="_blank">Add to Cart > </a>
+                    <a href="${walmart.learnMore}" class="left teal-text lighten-2" target="_blank">Learn More > </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col s6 center-align">
+              <img src="${ebay.image}" class="card-size" />
+              <h3 class="center=align flow-text">$${ebay.price}</h3>
+              <div class="center-align">
+                <div class="row">
+                  <div class="col s6 offset-s3 center-align">
+                    <a href="${ebay.addCart}" class="right teal-text lighten-2" target="_blank">Add to Cart > </a>
+                    <a href="${ebay.learnMore}" class="left teal-text lighten-2" target="_blank">Learn More > </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="row">
+            <h5>Product Description</h5>
+            <div class="divider teal lighten-2"></div>
+            <div class="col s5">
+              <p class="flow-text">${walmart.name}</p>
+            </div>
+            <div class="col s5 offset-s2">
+              <p class="flow-text">${ebay.name}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    $("body").empty();
+    $("body").append(template);
+  }
 };
+
+
