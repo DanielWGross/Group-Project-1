@@ -46,7 +46,7 @@ var renderElements = {
           </div>
           <div class="card-content teal lighten-2">
             <span class="card-title activator grey-text text-darken-4 truncate">${name}<i class="material-icons right activator waves-effect">arrow_drop_up</i></span>
-            <h5>$ ${price}</h5>
+            <h5 id="moneyFormat">$ ${price}</h5>
           </div>
           <div class="card-reveal">
             <span class="card-title grey-text text-darken-4">${name}<i class="material-icons right">close</i></span>
