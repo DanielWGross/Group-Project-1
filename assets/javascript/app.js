@@ -1,5 +1,3 @@
-
-
 // Storing number of results as a variable gloablly. Should look to implement a user setting
 var numResults = 5;
 // Gloabl variable which will house the JSON from the AJAX calls to pass on to other functions
@@ -13,13 +11,11 @@ var storage = {
     // Will extract relevant data from the JSON call and pass to render function
     pullData: function() {
       for (i= 0; i < numResults; i++) {
-        // console.log("Pull Data Running!");
         // variable to store location to avoid repetive typing
         var location = this.response.items[i];
         // largest image size avaliable
         var image = location.largeImage;
         // name contains short name and short description
-        // TODO: Open issue to try to extract both values seperate
         var name = location.name;
         // model number. Not avaliable on all results
         var model = location.modelNumber;
@@ -28,8 +24,8 @@ var storage = {
         // Long description of the product
         var description = location.longDescription;
         // Call the render function to generate the cards on the index.html file
-        // TODO: Create renderfunction
-        storage.renderElements("walmart", i, image, name, model, price, description);
+        renderElements.renderCard("walmart", i, image, name, price, description);
+        // storage.renderElements("walmart", i, image, name, model, price, description);
       };
     }
   },
@@ -43,7 +39,6 @@ var storage = {
     },
     apiReturn: false,
     pullData: function () {
-      var data = storage.ebay.response;
       if (this.apiReturn === true) {
       for (var i = 0; i < numResults; i++) {
         var image = this.response.image[i];
@@ -57,12 +52,7 @@ var storage = {
     }
   },
 
-  
-
-  renderElements: function(api, location, image, name, model, price, description) {
-    // console.log("Render Elements Running!");
-
-    // var checkBox = $("<i class='material-icons btn-Medium waves-effect waves-light'>");
+    renderElements: function(api, location, image, name, model, price, description) {
     var checkLabel = $("<label>")
     var checkBox = $("<input type='checkbox'> <span>")
     checkLabel.append(checkBox);
@@ -70,10 +60,8 @@ var storage = {
     $(checkBox).addClass("selectPrice");
     //On click change the checkBox to this 
     // var checkBox = $("<input type='checkbox' checked> <span>")
-
     //initial data-state for later use
     checkBox.attr("data-state", "unchecked");
-
     var cardColumn = $("<div class='col s2'>");
     var card = $("<div class='card medium card-selection' data-id=" + location + ">");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
@@ -90,7 +78,6 @@ var storage = {
     var cardRevealTitle = $("<span class='card-title grey-text text-darken-4'>");
       $(cardRevealTitle).html(description);
     var cardClose = $("<i class='material-icons right'>close</i>");
-
     cardRevealTitle.append(cardClose);
     cardReveal.append(cardRevealTitle);
     cardTitle.append(cardArrow);
@@ -104,10 +91,7 @@ var storage = {
     else {
       $("#ebay-test").append(cardColumn);
     }
-    
-  },
-
-
+      },
 
   renderCompare: function(walmartLocation, ebayLocation) {
     $("#test").empty();
@@ -171,13 +155,9 @@ var storage = {
   }
 };
 $("#search").keypress(function(event) {
-  
-  var searchTerm = $("#search").val().trim();
- 
-  
-  if (event.which === 13) {
-    
-   var afterValidate= userValidation(searchTerm);
+    var searchTerm = $("#search").val().trim();
+     if (event.which === 13) {
+       var afterValidate= userValidation(searchTerm);
     if(afterValidate === true){
       // console.log(storage);
       searchHandler(searchTerm);
@@ -185,29 +165,24 @@ $("#search").keypress(function(event) {
     }
     else{
       $("#search").val("");
-      console.log(storage);
        return;
       }
   };
 });
 
 function searchHandler (searchTerm) {
-  // prevents default submition //
   event.preventDefault();
   $("#test").empty();
-  console.log("Walmart is working");
   ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
 };
 
 var counter = 0;
-
 var compareItem1 = {
   image: "",
   name: "",
   price: "",
   description: "",
-
 };
 
 var compareItem2 = {
@@ -282,24 +257,15 @@ function userValidation(userInput){
 
   // first, we heck if the input is empty
   if(userInput == ""){
-    console.log("is empty");
     vex.dialog.alert('Please enter a product to search.')
-    // $(".modalText").text("Please enter a product to search.");
-    // renderingModal();
     return false;
   }
   else if(regex.test(userInput)){
-
-    console.log("No special character or Symbols! it should go through and give the result");
     return true;
   }
   // Last, when we find special characters or symbols in users input
   else{
-    console.log("Special characters in user input")
     vex.dialog.alert('Please enter your search again without any special characters. (Example: $, @, #, etc)')
-    // $(".modalText").text("Please enter your search again without any special characters. (Example: $, @, #, etc)");
-
-    // renderingModal();
     return false;
   }
 };

@@ -1,6 +1,9 @@
+/* Changing the mouse cursor to the pointer hand */
 #newSearch:hover {
     cursor: pointer;
 }
+
+/* setting size for the card images */
 .card-size {
     height: 225px!important;
     width: 225px!important;
@@ -10,13 +13,14 @@
     margin-left: 0!important;
 }
 
+/* Google font */
 body {
     font-family: 'Montserrat', sans-serif;
-   
 }
 
+/* Materialize container default width is too tight. Adjusting for our project */
 .wrapper {
-    width: 90%;
+    width: 100%;
 }
 
 /* animation LOGO */
@@ -45,6 +49,7 @@ p {
     text-align: justify;
 }
 
+/* setting height for search bar */
 .search-height {
     height:64px !important;
     margin: 0px !important;
