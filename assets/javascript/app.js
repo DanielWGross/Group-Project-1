@@ -62,9 +62,14 @@ var storage = {
   renderElements: function(api, location, image, name, model, price, description) {
     // console.log("Render Elements Running!");
 
-    var checkBox = $("<i class='material-icons btn-Medium waves-effect waves-light'>");
-    $(checkBox).text("add_box");
+    // var checkBox = $("<i class='material-icons btn-Medium waves-effect waves-light'>");
+    var checkLabel = $("<label>")
+    var checkBox = $("<input type='checkbox'> <span>")
+    checkLabel.append(checkBox);
+    $(checkBox).text("Compare");
     $(checkBox).addClass("selectPrice");
+    //On click change the checkBox to this 
+    // var checkBox = $("<input type='checkbox' checked> <span>")
 
     //initial data-state for later use
     checkBox.attr("data-state", "unchecked");
@@ -252,13 +257,13 @@ $(document).on("click",".selectPrice", function() {
   
   if (state === "unchecked") {
     $(this).attr("data-state", "checked");
+    // checked='checked'
+    $(this).addClass("selectPrice");
     $(this).addClass("green");
-
     //then call comparPrice function
   } else{
     $(this).attr("data-state", "unchecked");
     $(this).removeClass("green");
-
     //then call comparPrice function
   }
 });
