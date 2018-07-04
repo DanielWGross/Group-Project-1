@@ -69,8 +69,8 @@ var storage = {
     //initial data-state for later use
     checkBox.attr("data-state", "unchecked");
 
-    var cardColumn = $("<div class='col xl2 col l3  col m4  col  s12  col xs12'>");
-    var card = $("<div class='card card-selection' data-id=" + location + ">");
+    var cardColumn = $("<div class='col s2'>");
+    var card = $("<div class='card medium card-selection' data-id=" + location + ">");
     var cardImageHolder = $("<div class='card-image waves-effect waves-block waves-light'>");
     var cardImage = $("<img>");
       $(cardImage).addClass("activator card-size");
