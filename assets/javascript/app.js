@@ -48,6 +48,7 @@ var storage = {
 $("#search").keypress(function(event) {
     var searchTerm = $("#search").val().trim();
      if (event.which === 13) {
+      ajaxLoader();
        var afterValidate= userValidation(searchTerm);
     if(afterValidate === true){
       searchHandler(searchTerm);
@@ -136,4 +137,15 @@ function userValidation(userInput){
     vex.dialog.alert('Please enter your search again without any special characters. (Example: $, @, #, etc)')
     return false;
   };
+};
+function ajaxLoader(){
+$(document).ready(function(){
+  $(document).ajaxStart(function(){
+      $(".progress").css("display", "block");
+  });
+  $(document).ajaxComplete(function(){
+      $(".progress").css("display", "none");
+  });
+ 
+});
 };
