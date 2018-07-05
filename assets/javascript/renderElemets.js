@@ -79,7 +79,7 @@ var renderElements = {
       <div class="container">
         <div class="center-align">
           <h1>Compare Products</h1>
-          <p id="newSearch" class="center-align teal-text lighten-2">Choose Other Products To Compare > </p>
+          <p id="newSearch" class="center-align teal-text lighten-2">Choose Other Products To Compare></p>
         </div>
         <div class="section">
           <div class="row">
