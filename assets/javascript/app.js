@@ -58,6 +58,7 @@ var storage = {
 
 };
 $("#search").keypress(function(event) {
+  console.log("did this");
     var searchTerm = $("#search").val().trim();
      if (event.which === 13) {
 
@@ -112,7 +113,10 @@ $("#yellow").click(function(){
 
 
 $(document).on("click", "#newSearch", function () {
+  counter = 0;
   renderElements.renderSearch();
+  storage.walmart.pullData();
+  storage.ebay.pullData();
 });
 
 // compare user input with our restriction
