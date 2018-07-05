@@ -1,7 +1,6 @@
 var renderElements = {
   renderSearch: function() {
     var template = `
-      <button id="yellow">CLICK ME!</button>  
       <nav class="margin-20">
         <div class="nav-wrapper teal lighten-2">
           <div class="row">
@@ -38,7 +37,7 @@ var renderElements = {
       <div class="col s2">
         <div class="card medium card-selection" data-id=${location}>
         <label for="checkbox-${api}${location}">
-        <input type="checkbox" id="checkbox-${api}${location}" class="filled-in">
+        <input type="checkbox" id="checkbox-${api}${location}" class="filled-in box" data-id="${location}">
         <span>Compare</span>
         </label>
           <div class="card-image waves-effect waves-block waves-light">
