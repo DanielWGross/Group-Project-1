@@ -44,6 +44,18 @@ var storage = {
       };     
     }
   },
+
+  clearEbayResponse: function() {
+    console.log(storage.ebay.response);
+    var root = this.ebay.response;
+    root.name = [];
+    root.image = [];
+    root.price = [];
+    root.description = [];
+    root.URL = [];
+    console.log(storage.ebay.response);
+  },
+
 };
 $("#search").keypress(function(event) {
     var searchTerm = $("#search").val().trim();
@@ -64,43 +76,25 @@ $("#search").keypress(function(event) {
 function searchHandler (searchTerm) {
   event.preventDefault();
   $("#walmart").empty();
+  $("#ebay").empty();
   ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
 };
 
 var counter = 0;
-var compareItem1 = {
-  image: "",
-  name: "",
-  price: "",
-  description: "",
-};
 
-var compareItem2 = {
-  image: "",
-  name: "",
-  price: "",
-  description: "",
-}
+var walmartIndex = 0;
 
-$(".card").on("click", function(){
+$(document).on("click", ".box", function () {
   counter++;
   if (counter === 1) { //if using walmart data need to make sure clicked on walmart card
-    var index = this.attr("data-id").val();
-    var storageLocation = storage.walmart.response.items[index];
-    compareItem1.image = storageLocation.largeImage;
-    compareItem1.price = storageLocation.salePrice;
-    compareItem.name = storageLocation.name;
-    compareItem1.description = stroageLocation.description;
+    walmartIndex = $(this).attr("data-id");
+    console.log(walmartIndex);
   }
   if (counter === 2) {
-    var index = this.attr("data-id").val();
-    var storageLocation = storage.ebay.response;
-    compareItem2.image = storageLocation.image[index];
-    compareItem2.name = storageLocation.name[index];
-    compareItem2.price = storageLocation.price[index];
-    compareItem2.description = storageLocation.description[index];
-    clearPage();
+    var ebayIndex = $(this).attr("data-id");
+    console.log(ebayIndex);
+    renderElements.renderCompare(walmartIndex, ebayIndex);
   }
 });
 
