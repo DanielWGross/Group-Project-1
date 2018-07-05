@@ -57,6 +57,17 @@ var storage = {
     }
   },
 
+  clearEbayResponse: function() {
+    console.log(storage.ebay.response);
+    var root = this.ebay.response;
+    root.name = [];
+    root.image = [];
+    root.price = [];
+    root.description = [];
+    root.URL = [];
+    console.log(storage.ebay.response);
+  },
+
   
 
   renderElements: function(api, location, image, name, model, price, description) {
@@ -68,6 +79,7 @@ var storage = {
     checkLabel.append(checkBox);
     $(checkBox).text("Compare");
     $(checkBox).addClass("selectPrice");
+    checkBox.attr("data-location", location);
     //On click change the checkBox to this 
     // var checkBox = $("<input type='checkbox' checked> <span>")
 
@@ -110,6 +122,7 @@ var storage = {
 
 
   renderCompare: function(walmartLocation, ebayLocation) {
+    console.log("Made it to renderCompare");
     $("#test").empty();
     $("#ebay-test").empty();
     var container = $("<div class='container'>");
@@ -137,6 +150,7 @@ var storage = {
     var linkColumnTwo = $("<div class='col s6 offset-s3 center-align'>");
     var imageOne = $("<img>");
     $(imageOne).attr("src", storage.walmart.response.items[walmartLocation].largeImage);
+    console.log(imageOne);
     $(imageOne).addClass("card-size");
     var imageTwo = $("<img>");
     $(imageTwo).attr("src", storage.ebay.response.image[ebayLocation]);
@@ -194,6 +208,7 @@ function searchHandler (searchTerm) {
   // prevents default submition //
   event.preventDefault();
   $("#test").empty();
+  $("#ebay-test").empty();
   console.log("Walmart is working");
   ebay.callAPI(searchTerm);
   walmart.callAPI(searchTerm);
@@ -201,39 +216,29 @@ function searchHandler (searchTerm) {
 
 var counter = 0;
 
-var compareItem1 = {
-  image: "",
-  name: "",
-  price: "",
-  description: "",
+var index1 = 0;
 
-};
-
-var compareItem2 = {
-  image: "",
-  name: "",
-  price: "",
-  description: "",
-}
-
-$(".card").on("click", function(){
+$(document).on("click", ".selectPrice", function(){
   counter++;
   if (counter === 1) { //if using walmart data need to make sure clicked on walmart card
-    var index = this.attr("data-id").val();
-    var storageLocation = storage.walmart.response.items[index];
-    compareItem1.image = storageLocation.largeImage;
-    compareItem1.price = storageLocation.salePrice;
-    compareItem.name = storageLocation.name;
-    compareItem1.description = stroageLocation.description;
+    index1 = $(this).attr("data-location");
+
+    // var storageLocation = storage.walmart.response.items[index];
+    // compareItem1.image = storageLocation.largeImage;
+    // compareItem1.price = storageLocation.salePrice;
+    // compareItem.name = storageLocation.name;
+    // compareItem1.description = stroageLocation.description;
   }
   if (counter === 2) {
-    var index = this.attr("data-id").val();
-    var storageLocation = storage.ebay.response;
-    compareItem2.image = storageLocation.image[index];
-    compareItem2.name = storageLocation.name[index];
-    compareItem2.price = storageLocation.price[index];
-    compareItem2.description = storageLocation.description[index];
+    console.log(this);
+    var index2 = $(this).attr("data-location");
+    // var storageLocation = storage.ebay.response;
+    // compareItem2.image = storageLocation.image[index];
+    // compareItem2.name = storageLocation.name[index];
+    // compareItem2.price = storageLocation.price[index];
+    // compareItem2.description = storageLocation.description[index];
     clearPage();
+    storage.renderCompare(index1, index2);
   }
 });
 

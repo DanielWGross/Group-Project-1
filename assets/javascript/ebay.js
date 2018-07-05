@@ -14,6 +14,7 @@ var ebay = {
             method: "GET",
             dataType: 'json'
           }).then(function(response) {
+            storage.clearEbayResponse();
                 for (var i = 0; i < 5; i++) {
                 var itemInfo = response.findItemsAdvancedResponse[0].searchResult[0].item[i];
                 var productNumber = itemInfo.itemId[0];
