@@ -48,6 +48,8 @@ var storage = {
 $("#search").keypress(function(event) {
     var searchTerm = $("#search").val().trim();
      if (event.which === 13) {
+
+      $("#img-logo").remove();
       ajaxLoader();
        var afterValidate= userValidation(searchTerm);
     if(afterValidate === true){
@@ -149,3 +151,4 @@ $(document).ready(function(){
  
 });
 };
+
