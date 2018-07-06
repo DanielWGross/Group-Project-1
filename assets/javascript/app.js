@@ -47,13 +47,12 @@ var storage = {
   },
 };
 // Search bar event handler
-$("#search").keypress(function(event) {
-    var searchTerm = $("#search").val().trim();
-     if (event.which === 13) {
-      $("#img-logo").remove();
-      renderElements.renderLoading();
-       var afterValidate= userValidation(searchTerm);
-    if(afterValidate === true){
+$(document).on("keypress", "#search", function(event) {
+  var searchTerm = $("#search").val().trim();
+  if (event.which === 13) {
+  $("#img-logo").remove();
+  renderElements.renderLoading();
+    if(userValidation(searchTerm) === true){
       $("#walmart").empty();
       $("#ebay").empty();
       ebay.callAPI(searchTerm);
@@ -62,7 +61,7 @@ $("#search").keypress(function(event) {
     }
     else{
       $("#search").val("");
-       return;
+      return;
     }
   };
 });
@@ -79,5 +78,6 @@ $(document).on("click", ".box", function () {
 });
 // New Search event handler
 $(document).on("click", "#newSearch", function () {
+  console.log("In New Search");
   renderElements.renderSearch();
 });

@@ -15,9 +15,12 @@ var ebay = {
   searchURL2: "&siteid=0&version=713&ItemID=",
   // receives argument from user entry
   emptyObject: function() {
-    for (i = 0; i < storage.ebay.response.length; i++) {
-      storage.ebay.response[i] = [];
-    };
+    var root = storage.ebay.response;
+    root.name = [];
+    root.image = [];
+    root.price = [];
+    root.description = [];
+    root.URL = [];
   },
   callAPI: function(searchTerm) {
     $.ajax({
