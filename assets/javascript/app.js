@@ -6,11 +6,18 @@ var storage = {
   // All data should be coming in from the walmart.js file
   walmart : {
     // storing the JSON from the Walmart call
+    index : 0,
     response: {},
     // Default status set to false. Will ensure function does not run unless result is back
     apiReturn: false,
     // Will extract relevant data from the JSON call and pass to render function
     pullData: function() {
+      var walmartImg = `
+        <div class="col s2">
+          <img id="walmart-logo" class="card-size" src="assets/images/walmart.png">
+        </div>
+      `
+      $("#walmart").append(walmartImg);     
       for (i= 0; i < numResults; i++) {
         // variable to store location to avoid repetive typing
         var location = this.response.items[i];
@@ -21,11 +28,13 @@ var storage = {
         // Using sale price, not MSRP
         var price = location.salePrice;
         // Call the render function to generate the cards on the index.html file
+
         renderElements.renderCard("walmart", i, image, name, price);
       };
     }
   },
   ebay : {
+    index : 0,
     response: {
       name: [],
       image: [],
@@ -36,10 +45,17 @@ var storage = {
     apiReturn: false,
     pullData: function () {
       if (this.apiReturn === true) {
+        var ebayImg = `
+            <div class="col s2">
+              <img id="walmart-logo" class="card-size" src="assets/images/ebay.png">
+            </div>
+          `
+          $("#ebay").append(ebayImg);
         for (var i = 0; i < numResults; i++) {
           var image = this.response.image[i];
           var name = this.response.name[i];
           var price = this.response.price[i];
+          
           renderElements.renderCard("ebay", i, image, name, price);
         };
       };     
@@ -69,15 +85,17 @@ $(document).on("keypress", "#search", function(event) {
 $(document).on("click", ".box", function () {
   counter++;
   if (counter === 1) { //if using walmart data need to make sure clicked on walmart card
-    walmartIndex = $(this).attr("data-id");
+    storage.walmart.index = $(this).attr("data-id");
   }
   if (counter === 2) {
-    var ebayIndex = $(this).attr("data-id");
-    renderElements.renderCompare(walmartIndex, ebayIndex);
+    storage.ebay.index = $(this).attr("data-id");
+    renderElements.renderCompare(storage.walmart.index, storage.ebay.index);
   }
 });
 // New Search event handler
 $(document).on("click", "#newSearch", function () {
-  console.log("In New Search");
+  counter = 0;
   renderElements.renderSearch();
+  storage.walmart.pullData();
+  storage.ebay.pullData();
 });

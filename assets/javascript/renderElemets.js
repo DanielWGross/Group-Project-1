@@ -21,15 +21,11 @@ var renderElements = {
         <div class="indeterminate"></div>
       </div>
       
-      <img  id="img-logo" src="assets/images/group1logo.png">
-
       <div class="wrapper">
         <div class="row">
-          <div class="col s1"></div>
           <div id="walmart"></div>
         </div>
         <div class="row">
-          <div class="col s1"></div>
           <div id="ebay"></div>
         </div>
       </div>
