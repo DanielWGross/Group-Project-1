@@ -5,7 +5,7 @@ var renderElements = {
         <div class="nav-wrapper teal lighten-2">
           <div class="row">
             <div class="col s3"></div>
-            <div class="col s9">
+            <div class="col s6">
               <form>
               <div class="input-field search-height">
                 <input id="search" type="search" placeholder="Search, Compare, Conquer!">
@@ -16,6 +16,12 @@ var renderElements = {
           </div>
         </div>
       </nav>
+      
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+      
+      <img  id="img-logo" src="assets/images/group1logo.png">
 
       <div class="wrapper">
         <div class="row">
@@ -127,14 +133,11 @@ var renderElements = {
     $("body").append(template);
   },
   renderLoading: function ajaxLoader() {
-    $(document).ready(function(){
-      $(document).ajaxStart(function(){
-          $(".progress").css("display", "block");
-      });
-      $(document).ajaxComplete(function(){
-          $(".progress").css("display", "none");
-      });
-     
+    $(document).ajaxStart(function(){
+      $(".progress").css("display", "block");
     });
-  }
+    $(document).ajaxComplete(function(){
+      $(".progress").css("display", "none");
+    }); 
+  } 
 };
