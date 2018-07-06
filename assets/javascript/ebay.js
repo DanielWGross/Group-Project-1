@@ -14,13 +14,18 @@ var ebay = {
   //Search Query variable for API call
   searchURL2: "&siteid=0&version=713&ItemID=",
   // receives argument from user entry
+  emptyObject: function() {
+    for (i = 0; i < storage.ebay.response.length; i++) {
+      storage.ebay.response[i] = [];
+    };
+  },
   callAPI: function(searchTerm) {
     $.ajax({
       url: 'https://cors-anywhere.herokuapp.com/' + ebay.queryURL + ebay.apiKey + ebay.searchURL + searchTerm,
       method: "GET",
       dataType: 'json'
     }).then(function(response) {
-      storage.clearEbayResponse();
+      ebay.emptyObject();
       for (var i = 0; i < numResults; i++) {
         var itemInfo = response.findItemsAdvancedResponse[0].searchResult[0].item[i];
         var productNumber = itemInfo.itemId[0];

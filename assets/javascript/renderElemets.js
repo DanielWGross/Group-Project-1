@@ -31,7 +31,6 @@ var renderElements = {
     $("body").empty();
     $("body").append(template);
   },
-  
   renderCard: function(api, location, image, name, price) {
     var template = `
       <div class="col s2">
@@ -74,7 +73,6 @@ var renderElements = {
       addCart: storage.ebay.response.URL[ebayIndex],
       learnMore: storage.ebay.response.URL[ebayIndex]
     };
-
     var template = `
       <div class="container">
         <div class="center-align">
@@ -127,7 +125,16 @@ var renderElements = {
     `;
     $("body").empty();
     $("body").append(template);
+  },
+  renderLoading: function ajaxLoader() {
+    $(document).ready(function(){
+      $(document).ajaxStart(function(){
+          $(".progress").css("display", "block");
+      });
+      $(document).ajaxComplete(function(){
+          $(".progress").css("display", "none");
+      });
+     
+    });
   }
 };
-
-

@@ -1,5 +1,6 @@
 // Storing number of results as a variable gloablly. Should look to implement a user setting
 var numResults = 5;
+var counter = 0;
 // Gloabl variable which will house the JSON from the AJAX calls to pass on to other functions
 var storage = {
   // All data should be coming in from the walmart.js file
@@ -44,105 +45,39 @@ var storage = {
       };     
     }
   },
-
-  clearEbayResponse: function() {
-    console.log(storage.ebay.response);
-    var root = this.ebay.response;
-    root.name = [];
-    root.image = [];
-    root.price = [];
-    root.description = [];
-    root.URL = [];
-    console.log(storage.ebay.response);
-  },
-
 };
+// Search bar event handler
 $("#search").keypress(function(event) {
     var searchTerm = $("#search").val().trim();
      if (event.which === 13) {
-
       $("#img-logo").remove();
-      ajaxLoader();
+      renderElements.renderLoading();
        var afterValidate= userValidation(searchTerm);
     if(afterValidate === true){
-      searchHandler(searchTerm);
+      $("#walmart").empty();
+      $("#ebay").empty();
+      ebay.callAPI(searchTerm);
+      walmart.callAPI(searchTerm);
       $("#search").val("");
     }
     else{
       $("#search").val("");
        return;
-      }
+    }
   };
 });
-
-function searchHandler (searchTerm) {
-  event.preventDefault();
-  $("#walmart").empty();
-  $("#ebay").empty();
-  ebay.callAPI(searchTerm);
-  walmart.callAPI(searchTerm);
-};
-
-var counter = 0;
-
-var walmartIndex = 0;
-
+// Comparison event handler
 $(document).on("click", ".box", function () {
   counter++;
   if (counter === 1) { //if using walmart data need to make sure clicked on walmart card
     walmartIndex = $(this).attr("data-id");
-    console.log(walmartIndex);
   }
   if (counter === 2) {
     var ebayIndex = $(this).attr("data-id");
-    console.log(ebayIndex);
     renderElements.renderCompare(walmartIndex, ebayIndex);
   }
 });
-
-function clearPage() {
-  $(".nav-wrapper").empty();
-  $(".wrapper").empty();
-};
-
-// TODO: Needs to be removed once real functionality is added
-$("#yellow").click(function(){
-  renderElements.renderCompare(1,1);
-}); 
-
-
+// New Search event handler
 $(document).on("click", "#newSearch", function () {
   renderElements.renderSearch();
 });
-
-// compare user input with our restriction
-function userValidation(userInput){
-  event.preventDefault();
-  // This Regular Expression only allow lower alphabet, Upper alphabet, number, and spaces between words
-  var regex= /^[a-zA-Z0-9 "']*$/;
-  // first, we check if the input is empty
-  if(userInput == ""){
-    vex.dialog.alert('Please enter a product to search.')
-    return false;
-  }
-  else if(regex.test(userInput)){
-    return true;
-  }
-  // Last, when we find special characters or symbols in users input
-  else{
-    vex.dialog.alert('Please enter your search again without any special characters. (Example: $, @, #, etc)')
-    return false;
-  };
-};
-function ajaxLoader(){
-$(document).ready(function(){
-  $(document).ajaxStart(function(){
-      $(".progress").css("display", "block");
-  });
-  $(document).ajaxComplete(function(){
-      $(".progress").css("display", "none");
-  });
- 
-});
-};
-

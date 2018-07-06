@@ -7,7 +7,6 @@ function ebaySearch() {
     }
   });
 };
-
 function ebayShop() {
   vex.dialog.prompt({
     message: 'What is your EBay Shopping API Key?',
@@ -17,7 +16,6 @@ function ebayShop() {
     }
   });
 };
-
 function walmartSearch() {
   vex.dialog.prompt({
     message: 'What is your Walmart API Key?',
