@@ -8,6 +8,7 @@ function userValidation(userInput){
       vex.dialog.alert('Please enter a product to search.')
       return false;
     }
+    // check if the input is validated
     else if(regex.test(userInput)){
       return true;
     }
