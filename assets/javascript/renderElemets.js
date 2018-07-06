@@ -4,23 +4,32 @@ var renderElements = {
       <nav class="margin-20">
         <div class="nav-wrapper teal lighten-2">
           <div class="row">
-            <div class="col s3"></div>
+            <div class="col s3">
+            </div>
             <div class="col s6">
               <form>
-              <div class="input-field search-height">
-                <input id="search" type="search" placeholder="Search, Compare, Conquer!">
-                <label for="search"><i class="material-icons">search</i></label>
-              </div>
+                <div class="input-field search-height">
+                  <input id="search" type="search" placeholder="Search Here">
+                  <label for="search"><i class="material-icons">search</i></label>
+                </div>
               </form>
+            </div>
+            <div id="logoCol"class="col s3">
+              <a href="https://github.com/DanielWGross/Group-Project-1">
+              <img id="git-logo" src="assets/images/githubLogo.svg">
+              </a> 
+              <a href="api.html">
+              <img id="apiKey-logo" src="assets/images/apiLogo.png" href="api.html">
+              </a> 
             </div>
           </div>
         </div>
       </nav>
-      
+
       <div class="progress">
         <div class="indeterminate"></div>
       </div>
-      
+
       <div class="wrapper">
         <div class="row">
           <div id="walmart"></div>
