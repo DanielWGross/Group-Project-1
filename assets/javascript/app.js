@@ -54,8 +54,8 @@ $("#search").keypress(function(event) {
       renderElements.renderLoading();
        var afterValidate= userValidation(searchTerm);
     if(afterValidate === true){
-      $("#walmart").empty();
-      $("#ebay").empty();
+      // $("#walmart").empty();
+      // $("#ebay").empty();
       ebay.callAPI(searchTerm);
       walmart.callAPI(searchTerm);
       $("#search").val("");
